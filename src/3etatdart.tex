@@ -1,0 +1,78 @@
+\section{Etat de l 'art}
+   Cette partie concerne plus l architecture global des clouds. Leurs évolutions 
+   au cours du temps ce qui mettra le point sur le besoin de la création d un nouveau 
+   point d entrée.   
+
+    \subsection{Le premier Cloud de MDI}
+        \gls{CC} est le premier cloud fait maison de \gls{mdi} qui englobe un ensemble 
+        de services pour les clients... L'architecture globale de ce cloud est comme le montre 
+        le shema suivant: 
+
+        \begin{figure}[ht]
+            \centering
+            \includegraphics[scale=0.8]{\images/mos_overview.png}
+            \caption{Aper\c cu MOS}
+        \end{figure}
+
+        \gls{CC} comporte plusieurs composants : 
+        \begin{itemize}
+            \renewcommand{\labelitemi}{$\bullet$}
+            \item  un \gls{BS} qui est le composant d'échange de messages entre le cloud et 
+            les OBD. Il consiste le point d'entrée du cloud.
+            \item  un broker de message pour les systèmes Big Data
+            \item  un ensemble de services qui sont accéder à partir de APIV3 
+            \item une base de données pour le stockage des données 
+            \item un dashboard pour l affichage des données et l acces visuel 
+            des services au clients 
+        \end{itemize}
+       
+    \break
+
+    \subsection{De \gls{CC} à \gls{CN}}
+        Exprimer le besoin du changement d'architecture. 
+
+
+       
+
+        \vspace{0.2cm}
+
+       
+
+    \subsection{Communication entre composants}
+       mos  présente deux méthodes principales de communication entre les
+        composants:
+        \begin{itemize}
+            \renewcommand{\labelitemi}{$\bullet$}
+            \item Communication par évènements: Un composant produit un Event,
+                et tous les listeners le re\c coivent. Cela est fait par l'intermédiaire
+                d'un broker.
+            \item Appels API: Chaque composant expose une API pour les composants
+                avec authorisation. Le composant a plusieurs choix de méthodes de
+                communication (MsgPck, TCP Socket).
+        \end{itemize}
+
+        \vspace{0.2cm}
+
+        \begin{figure}[ht]
+            \centering
+            \includegraphics[scale=0.8]{\images/broker_pattern.png}
+            \caption{Le broker MOS}
+        \end{figure}
+
+        \subsection{format de données du cloud }
+
+        Track : 
+        Message : 
+        
+
+        message track 
+
+        Paragraphe sur le language Go : 
+        Go\cite{rust_site} est un jeune language de programmation système
+        fascinant. Ce language compilé hérite des idées des paradigmes de
+        programmation impérative et fonctionnelle. Il définit des concepts et
+        des règles qui assurent à l'utilisateur des binaires "safe".\\[0.3cm]
+        Rust ne sacrifie pas la performance contre la sûreté. Il a des
+        performances similaires à celles de C et C++. En fait, ses plus grands
+        partisans espèrent qu'il va détrôner C!
+      

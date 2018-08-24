@@ -1,0 +1,14 @@
+[0] Config.pm:340> INFO - This is Biber 2.4
+[0] Config.pm:343> INFO - Logfile is 'build/main.blg'
+[31] biber:287> INFO - === Fri Aug 24, 2018, 16:48:56
+[99] Biber.pm:348> INFO - Reading 'build/main.bcf'
+[203] Biber.pm:742> INFO - Found 12 citekeys in bib section 0
+[208] Biber.pm:3151> INFO - Processing section 0
+[234] Biber.pm:3308> INFO - Looking for bibtex format file 'resources/bibliography.bib' for section 0
+[242] bibtex.pm:1113> INFO - Decoding LaTeX character macros into UTF-8
+[250] bibtex.pm:974> INFO - Found BibTeX data source 'resources/bibliography.bib'
+[365] UCollate.pm:65> INFO - Overriding locale 'fr-FR' defaults 'variable = shifted' with 'variable = non-ignorable'
+[365] UCollate.pm:65> INFO - Overriding locale 'fr-FR' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[365] Biber.pm:3028> INFO - Sorting list 'none/global' of type 'entry' with scheme 'none' and locale 'fr-FR'
+[374] bbl.pm:519> INFO - Writing 'build/main.bbl' with encoding 'UTF-8'
+[385] bbl.pm:615> INFO - Output to build/main.bbl
