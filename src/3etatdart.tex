@@ -10,8 +10,8 @@
 
         \begin{figure}[ht]
             \centering
-            \includegraphics[scale=0.8]{\images/mos_overview.png}
-            \caption{Aper\c cu MOS}
+            \includegraphics[scale=0.4]{\images/cc.png}
+            \caption{L'architecture de CloudConnect}
         \end{figure}
 
         \gls{CC} comporte plusieurs composants : 
@@ -25,39 +25,43 @@
             \item un dashboard pour l affichage des données et l acces visuel 
             des services au clients 
         \end{itemize}
+        \vspace{0.2cm}
+
+        \gls{mdi21} est le protocole  ASN1 fait maison, conçu pour la communication entre boîtiers et Cloud.
+        //développé un peu sur MD21
+
        
     \break
 
     \subsection{De \gls{CC} à \gls{CN}}
         Exprimer le besoin du changement d'architecture. 
+        Autour de .. 
+        Développement des agents : Un Framework interne est utilisé pour simplifier le développement des différents 
+        agents en langage ruby. Ce framework fournit un ensemble de fonctions qui permettent, entre autres, d’accéder au 
+        courtier de messages en lecture et en écriture. Concernant les agents à état, le framework ne fournit pas 
+        de mécanismes pour simplifier la gestion de leurs états. La gestion de l’état est donc laissée aux développeurs.\\[0.3cm]
+        Déploiement des agents : les agents sont exécutés de manière parallèle. En d’autres termes, un agent peut avoir 
+        plusieurs instances déployées dans différentes machines. Les différentes instances d’un même agent partagent 
+        le traitement du flux des événements mais ne communiquent pas entre eux. Le déploiement ainsi que la maintenance 
+        d’un agent se traduisent par une mise-à-jour des fichiers de configuration des machines exécutant l’agent via le logiciel Chef.\\ [0.3cm]
+
+        Solution :  Création d‘un autre Cloud afin de revoir l’architecture logicielle et technique de Cloud 
+        Connect afin de simplifier le développement des agents, leurs déploiements ainsi que leurs maintenances et 
+        de permettre à des développeurs externes de l’entreprise de coder leurs propres agents.
 
 
-       
-
-        \vspace{0.2cm}
-
-       
-
-    \subsection{Communication entre composants}
-       mos  présente deux méthodes principales de communication entre les
-        composants:
-        \begin{itemize}
-            \renewcommand{\labelitemi}{$\bullet$}
-            \item Communication par évènements: Un composant produit un Event,
-                et tous les listeners le re\c coivent. Cela est fait par l'intermédiaire
-                d'un broker.
-            \item Appels API: Chaque composant expose une API pour les composants
-                avec authorisation. Le composant a plusieurs choix de méthodes de
-                communication (MsgPck, TCP Socket).
-        \end{itemize}
-
-        \vspace{0.2cm}
 
         \begin{figure}[ht]
             \centering
-            \includegraphics[scale=0.8]{\images/broker_pattern.png}
-            \caption{Le broker MOS}
+            \includegraphics[scale=0.4]{\images/cn.png}
+            \caption{L'architecture du cloud avec CloudNext}
         \end{figure}
+
+        \vspace{0.2cm}
+
+       
+
+       
 
         \subsection{format de données du cloud }
 
@@ -72,7 +76,5 @@
         fascinant. Ce language compilé hérite des idées des paradigmes de
         programmation impérative et fonctionnelle. Il définit des concepts et
         des règles qui assurent à l'utilisateur des binaires "safe".\\[0.3cm]
-        Rust ne sacrifie pas la performance contre la sûreté. Il a des
-        performances similaires à celles de C et C++. En fait, ses plus grands
-        partisans espèrent qu'il va détrôner C!
+       
       

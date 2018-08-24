@@ -26,12 +26,12 @@
       \field{note}{Site officiel de \company{}}
       \field{title}{\href{https://www.mobile-devices.com/}{www.mobile-devices.com}}
     \endentry
-    \entry{rust_site}{online}{}
+    \entry{cycle_iteratif}{online}{}
       \field{sortinit}{0}
       \field{sortinithash}{990108227b3316c02842d895999a0165}
       \field{labeltitlesource}{title}
-      \field{note}{Rust language official website}
-      \field{title}{\href{https://www.rust-lang.org/en-US/}{www.rust-lang.org}}
+      \field{note}{Documentation technique sur le cycle itératif}
+      \field{title}{\href{http://www.geek-directeur-technique.com/2009/02/06/le-cycle-iteratif}{www.geek-directeur-technique.org}}
     \endentry
     \entry{marben_site}{online}{}
       \field{sortinit}{0}
@@ -104,6 +104,7 @@
       \field{title}{\href{https://github.com/berndporr/iir1}{LibIir1}}
     \endentry
   \endsortlist
+  \missing{rust_site}
 \endrefsection
 \endinput
 

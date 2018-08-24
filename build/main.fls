@@ -1,4 +1,4 @@
-PWD /home/ihsen/Téléchargements/Internship-report-master
+PWD /home/ihsen/go/src/Internship-report-master
 INPUT /etc/texmf/web2c/texmf.cnf
 INPUT /usr/share/texmf/web2c/texmf.cnf
 INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
@@ -365,12 +365,12 @@ INPUT ./resources/images/cycleiteratif.png
 OUTPUT build/src/3etatdart.aux
 INPUT src/3etatdart.tex
 INPUT src/3etatdart.tex
-INPUT resources/images/mos_overview.png
-INPUT ./resources/images/mos_overview.png
-INPUT ./resources/images/mos_overview.png
-INPUT resources/images/broker_pattern.png
-INPUT ./resources/images/broker_pattern.png
-INPUT ./resources/images/broker_pattern.png
+INPUT resources/images/cc.png
+INPUT ./resources/images/cc.png
+INPUT ./resources/images/cc.png
+INPUT resources/images/cn.png
+INPUT ./resources/images/cn.png
+INPUT ./resources/images/cn.png
 OUTPUT build/src/4iteration1.aux
 INPUT src/4iteration1.tex
 INPUT src/4iteration1.tex

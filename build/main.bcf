@@ -2027,18 +2027,19 @@
   </bcf:bibdata>
   <bcf:section number="0">
     <bcf:citekey order="1">mdi_site</bcf:citekey>
-    <bcf:citekey order="2">rust_site</bcf:citekey>
-    <bcf:citekey order="3">marben_site</bcf:citekey>
-    <bcf:citekey order="4">vera_doc</bcf:citekey>
-    <bcf:citekey order="5">wave_spec</bcf:citekey>
-    <bcf:citekey order="6">v2x_spec</bcf:citekey>
-    <bcf:citekey order="7">vera_doc</bcf:citekey>
-    <bcf:citekey order="8">rust_book</bcf:citekey>
-    <bcf:citekey order="9">rust_unsafe_book</bcf:citekey>
-    <bcf:citekey order="10">variance_wiki</bcf:citekey>
-    <bcf:citekey order="11">crates_io</bcf:citekey>
-    <bcf:citekey order="12">mem_pool</bcf:citekey>
-    <bcf:citekey order="13">iir1</bcf:citekey>
+    <bcf:citekey order="2">cycle_iteratif</bcf:citekey>
+    <bcf:citekey order="3">rust_site</bcf:citekey>
+    <bcf:citekey order="4">marben_site</bcf:citekey>
+    <bcf:citekey order="5">vera_doc</bcf:citekey>
+    <bcf:citekey order="6">wave_spec</bcf:citekey>
+    <bcf:citekey order="7">v2x_spec</bcf:citekey>
+    <bcf:citekey order="8">vera_doc</bcf:citekey>
+    <bcf:citekey order="9">rust_book</bcf:citekey>
+    <bcf:citekey order="10">rust_unsafe_book</bcf:citekey>
+    <bcf:citekey order="11">variance_wiki</bcf:citekey>
+    <bcf:citekey order="12">crates_io</bcf:citekey>
+    <bcf:citekey order="13">mem_pool</bcf:citekey>
+    <bcf:citekey order="14">iir1</bcf:citekey>
   </bcf:section>
   <bcf:sortlist section="0" name="none/global" type="entry" sortscheme="none" sortnamekeyscheme="global">
   <bcf:sorting>
