@@ -1,25 +1,34 @@
-\section{Etat de l 'art}
-   Cette partie concerne plus l architecture global des clouds. Leurs évolutions 
-   au cours du temps ce qui mettra le point sur le besoin de la création d un nouveau 
-   point d entrée.   
+\section{Etude de l'exisant}
+   Cette partie concerne le plus sur l'architecture globale des serveurs clouds de \gls{mdi}, leurs évolutions 
+   au cours du temps ce qui éclaircirera le besoin de la création du nouveau composant 
+   point d entrée.  
 
     \subsection{Le premier Cloud de MDI}
-        \gls{CC} est le premier cloud fait maison de \gls{mdi} qui englobe un ensemble 
-        de services pour les clients... L'architecture globale de ce cloud est comme le montre 
-        le shema suivant: 
+        Les boîtiers ont la particularité de s’intégrer dans tout type de véhicule et permettent
+       l’émission, la réception, le traitement et la représentation de données diverses comme
+       l'état de la batterie du véhicule, les données standards, les données du propriétaire du
+       véhicule ou des données des capteurs du boîtier même (localisation GPS,
+       l’accéléromètre, le gyroscope, la consommation de la batterie ...)et un tas d'autres informations complémentaires.
+       Ces données là ont besoin d'être traité pour pouvoir en sortir de l'information utile, d'où le besoin de services divers, regroupés 
+       dans un cloud. \\ [0.3cm]
+    
+         Le CloudConnect - ou \gls{CC} - est le premier cloud fait maison de \gls{mdi} qui englobe un ensemble 
+        de services pour les clients. Créé en .., \gls{CC} traite 
+        jusqu'à présent un nombre important du traitement des données.
+        L'architecture globale de ce cloud est comme le montre  le shema suivant: 
 
         \begin{figure}[ht]
             \centering
             \includegraphics[scale=0.4]{\images/cc.png}
-            \caption{L'architecture de CloudConnect}
+            \caption{L'architecture de CloudConnect - \gls{CC}}
         \end{figure}
 
-        \gls{CC} comporte plusieurs composants : 
+        CloudConnect comporte plusieurs composants : 
         \begin{itemize}
             \renewcommand{\labelitemi}{$\bullet$}
             \item  un \gls{BS} qui est le composant d'échange de messages entre le cloud et 
-            les OBD. Il consiste le point d'entrée du cloud.
-            \item  un broker de message pour les systèmes Big Data
+            les OBD. Il consiste le point d'entrée du cloud et qui est le composant à redéfinir.
+            \item  un broker de message pour les systèmes Big Data: 
             \item  un ensemble de services qui sont accéder à partir de APIV3 
             \item une base de données pour le stockage des données 
             \item un dashboard pour l affichage des données et l acces visuel 
@@ -28,19 +37,17 @@
         \vspace{0.2cm}
 
         \gls{mdi21} est le protocole  ASN1 fait maison, conçu pour la communication entre boîtiers et Cloud.
-        //développé un peu sur MD21
+        Ce protocole sera bien détaillé à la fin de ce chapitre.
 
-       
-    \break
-
+    
     \subsection{De \gls{CC} à \gls{CN}}
         Exprimer le besoin du changement d'architecture. 
-        Autour de .. 
-        Développement des agents : Un Framework interne est utilisé pour simplifier le développement des différents 
+        Autour de .. \\
+        \textbf{Développement des agents :} Un Framework interne est utilisé pour simplifier le développement des différents 
         agents en langage ruby. Ce framework fournit un ensemble de fonctions qui permettent, entre autres, d’accéder au 
         courtier de messages en lecture et en écriture. Concernant les agents à état, le framework ne fournit pas 
         de mécanismes pour simplifier la gestion de leurs états. La gestion de l’état est donc laissée aux développeurs.\\[0.3cm]
-        Déploiement des agents : les agents sont exécutés de manière parallèle. En d’autres termes, un agent peut avoir 
+        \textbf{Déploiement des agents :} les agents sont exécutés de manière parallèle. En d’autres termes, un agent peut avoir 
         plusieurs instances déployées dans différentes machines. Les différentes instances d’un même agent partagent 
         le traitement du flux des événements mais ne communiquent pas entre eux. Le déploiement ainsi que la maintenance 
         d’un agent se traduisent par une mise-à-jour des fichiers de configuration des machines exécutant l’agent via le logiciel Chef.\\ [0.3cm]
@@ -59,16 +66,23 @@
 
         \vspace{0.2cm}
 
-       
+       \break
 
        
 
-        \subsection{Données du cloud }
+        \subsection{Voyons le BS actuel}
 
-        Format : 
+        \subsubsection{technologies}
+        Redis , Indigen ..., fonctionnalités 
+        \subsubsection{Protocole md 21 }
+        
+
+        Format des données.
+        Format , 
 
         Track : 
         Message : 
+        Presence : 
         
 
 

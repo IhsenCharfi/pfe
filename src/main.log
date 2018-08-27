@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.20)  27 AUG 2018 10:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.20)  27 AUG 2018 14:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1208,7 +1208,15 @@ File: listings.cfg 2015/06/04 1.6 listings configuration
 Package: listings 2015/06/04 1.6 (Carsten Heinz)
 \lstag@spacecount=\count377
 )
-Package hyperref Info: Option `colorlinks' set `false' on input line 32.
+(/usr/share/texlive/texmf-dist/tex/latex/tocbibind/tocbibind.sty
+Package: tocbibind 2010/10/13 v1.5k extra ToC listings
+Package tocbibind Info: The document has section divisions on input line 50.
+
+
+Package tocbibind Note: Using section or other style headings.
+
+)
+Package hyperref Info: Option `colorlinks' set `false' on input line 33.
    defining Unicode char U+00A0 (decimal 160)
 
 
@@ -1218,21 +1226,21 @@ Type X to quit or <RETURN> to proceed,
 or enter new name. (Default extension: tex)
 
 Enter file name: 
-/home/ihsen/go/src/Internship-report-master/src/main.tex:103: Emergency stop.
+/home/ihsen/go/src/Internship-report-master/src/main.tex:104: Emergency stop.
 <read *> 
          
-l.103 \input{\glossaries}
+l.104 \input{\glossaries}
                          ^^M
 *** (cannot \read from terminal in nonstop modes)
 
  
 Here is how much of TeX's memory you used:
- 20591 strings out of 493029
- 326686 string characters out of 6136234
- 658985 words of memory out of 5000000
- 23812 multiletter control sequences out of 15000+600000
+ 20671 strings out of 493029
+ 327837 string characters out of 6136234
+ 661653 words of memory out of 5000000
+ 23888 multiletter control sequences out of 15000+600000
  4702 words of font info for 16 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  53i,0n,92p,2028b,439s stack positions out of 5000i,500n,10000p,200000b,80000s
-/home/ihsen/go/src/Internship-report-master/src/main.tex:103:  ==> Fatal error 
+/home/ihsen/go/src/Internship-report-master/src/main.tex:104:  ==> Fatal error 
 occurred, no output PDF file produced!
