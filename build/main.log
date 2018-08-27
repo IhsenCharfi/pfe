@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.20)  24 AUG 2018 18:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.20)  27 AUG 2018 10:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1177,6 +1177,10 @@ File: pppdftex.def 2015/09/18 v0.5d Pdfpages driver for pdfTeX (AM)
 \c@AM@survey=\count368
 \AM@templatesizebox=\box36
 )
+(/usr/share/texlive/texmf-dist/tex/latex/lstaddons/lstautogobble.sty
+Package: lstautogobble 2012/05/03 v0.1 Implements 'autogobble' option for 'list
+ings'
+
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
 \lst@mode=\count369
 \lst@gtempboxa=\box37
@@ -1201,16 +1205,9 @@ File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 File: listings.cfg 2015/06/04 1.6 listings configuration
 ))
 Package: listings 2015/06/04 1.6 (Carsten Heinz)
-
-(./extensions/listings-rust.sty
-Package: listings-rust 2018/01/23 Custom Package
-)
-(/usr/share/texlive/texmf-dist/tex/latex/lstaddons/lstautogobble.sty
-Package: lstautogobble 2012/05/03 v0.1 Implements 'autogobble' option for 'list
-ings'
 \lstag@spacecount=\count377
 )
-Package hyperref Info: Option `colorlinks' set `false' on input line 33.
+Package hyperref Info: Option `colorlinks' set `false' on input line 32.
    defining Unicode char U+00A0 (decimal 160)
 
 (./resources/glossaries.tex)
@@ -1218,7 +1215,7 @@ Package hyperref Info: Option `colorlinks' set `false' on input line 33.
 \glo@main@file=\write5
 \openout5 = `main.glo'.
 
-Package glossaries Info: Writing glossary file main.glo on input line 108.
+Package glossaries Info: Writing glossary file main.glo on input line 106.
 Package biblatex Info: Trying to load language 'french'...
 Package biblatex Info: ... file 'french.lbx' found.
 
@@ -1240,23 +1237,23 @@ LaTeX Warning: Label `table:1' multiply defined.
 
 LaTeX Warning: Label `Figure ' multiply defined.
 
-) (build/src/6conclusion.aux))
+) (build/src/6conclusion.aux) (build/src/perspectives.aux))
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1286,12 +1283,12 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Info: Redefining \degres on input line 120.
-LaTeX Info: Redefining \dots on input line 120.
-LaTeX Info: Redefining \up on input line 120.
+LaTeX Info: Redefining \degres on input line 118.
+LaTeX Info: Redefining \dots on input line 118.
+LaTeX Info: Redefining \up on input line 118.
 Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             https://www.ctan.org/pkg/pageslts
-(lastpage)             ! on input line 120.
+(lastpage)             ! on input line 118.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1328,7 +1325,7 @@ Package lastpage Info: Please have a look at the pageslts package at
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box40
-Package hyperref Info: Link coloring OFF on input line 120.
+Package hyperref Info: Link coloring OFF on input line 118.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -1337,9 +1334,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count384
 )
-LaTeX Info: Redefining \ref on input line 120.
-LaTeX Info: Redefining \pageref on input line 120.
-LaTeX Info: Redefining \nameref on input line 120.
+LaTeX Info: Redefining \ref on input line 118.
+LaTeX Info: Redefining \pageref on input line 118.
+LaTeX Info: Redefining \nameref on input line 118.
 
 (build/main.out) (build/main.out)
 \@outlinefile=\write6
@@ -1356,13 +1353,13 @@ Package biblatex Info: ... file 'main.bbl' found.
 
 Package biblatex Warning: The following entry could not be found
 (biblatex)                in the database:
-(biblatex)                rust_site
+(biblatex)                variance_wiki
 (biblatex)                Please verify the spelling and rerun
 (biblatex)                LaTeX afterwards.
 
 )
-Package biblatex Info: Reference section=0 on input line 120.
-Package biblatex Info: Reference segment=0 on input line 120.
+Package biblatex Info: Reference section=0 on input line 118.
+Package biblatex Info: Reference segment=0 on input line 118.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
@@ -1375,7 +1372,7 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 Package pdflscape Info: Auto-detected driver: pdftex on input line 80.
 )
 \c@lstlisting=\count385
-Package hyperref Info: Option `pageanchor' set `false' on input line 123.
+Package hyperref Info: Option `pageanchor' set `false' on input line 121.
 \openout2 = `src/title_page.aux'.
 
 
@@ -1413,7 +1410,7 @@ Package hyperref Info: Option `pageanchor' set `false' on input line 123.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 
-<resources/images/mdi_logo.jpeg, id=182, 180.675pt x 180.675pt>
+<resources/images/mdi_logo.jpeg, id=170, 180.675pt x 180.675pt>
 File: resources/images/mdi_logo.jpeg Graphic file (type jpg)
 
 <use resources/images/mdi_logo.jpeg>
@@ -1427,7 +1424,7 @@ Package pdftex.def Info: resources/images/mdi_logo.jpeg used on input line 7.
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./resources/images/mdi_log
 o.jpeg>] [2])
-Package hyperref Info: Option `pageanchor' set `true' on input line 128.
+Package hyperref Info: Option `pageanchor' set `true' on input line 126.
 \openout2 = `src/acknowledgements.aux'.
 
 
@@ -1441,11 +1438,19 @@ Package hyperref Info: Option `pageanchor' set `true' on input line 128.
 \tf@toc=\write7
 \openout7 = `main.toc'.
 
- [3]
+ [3] (build/main.lof)
+\tf@lof=\write8
+\openout8 = `main.lof'.
+
+
+[4] (build/main.lot)
+\tf@lot=\write9
+\openout9 = `main.lot'.
+
+ [5]
 \openout2 = `src/1introduction.aux'.
 
-
-(./src/1introduction.tex) [1
+ (./src/1introduction.tex) [1
 
 ]
 \openout2 = `src/2contexte.aux'.
@@ -1455,7 +1460,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--13
 
  []
 
-<resources/images/cartemonde1.jpg, id=271, 313.17pt x 243.0681pt>
+<resources/images/cartemonde1.jpg, id=287, 313.17pt x 243.0681pt>
 File: resources/images/cartemonde1.jpg Graphic file (type jpg)
 
 <use resources/images/cartemonde1.jpg>
@@ -1480,7 +1485,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 41--47
 
  []
 
-<resources/images/carcloud.png, id=280, 981.6675pt x 297.11pt>
+<resources/images/carcloud.png, id=294, 981.6675pt x 297.11pt>
 File: resources/images/carcloud.png Graphic file (type png)
 
 <use resources/images/carcloud.png>
@@ -1501,7 +1506,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 93--117
 
  []
 
-<resources/images/bs.png, id=290, 910.40125pt x 362.35374pt>
+<resources/images/bs.png, id=303, 910.40125pt x 362.35374pt>
 File: resources/images/bs.png Graphic file (type png)
 
 <use resources/images/bs.png>
@@ -1512,7 +1517,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 140--143
 
  []
 
-<resources/images/cycleiteratif.png, id=302, 364.36125pt x 244.915pt>
+<resources/images/cycleiteratif.png, id=314, 364.36125pt x 244.915pt>
 File: resources/images/cycleiteratif.png Graphic file (type png)
 
 <use resources/images/cycleiteratif.png>
@@ -1520,11 +1525,15 @@ Package pdftex.def Info: resources/images/cycleiteratif.png used on input line
 172.
 (pdftex.def)             Requested size: 291.48938pt x 195.93225pt.
  [5 <./resources/images/bs.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 198--201
+
+ []
+
 [6 <./resources/images/cycleiteratif.png>]) [7]
 \openout2 = `src/3etatdart.aux'.
 
  (./src/3etatdart.tex
-<resources/images/cc.png, id=325, 1079.03125pt x 548.0475pt>
+<resources/images/cc.png, id=336, 1079.03125pt x 548.0475pt>
 File: resources/images/cc.png Graphic file (type png)
 
 <use resources/images/cc.png>
@@ -1553,7 +1562,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 37--47
 
  []
 
-<resources/images/cn.png, id=337, 1285.80376pt x 725.71124pt>
+<resources/images/cn.png, id=346, 1285.80376pt x 725.71124pt>
 File: resources/images/cn.png Graphic file (type png)
 
 <use resources/images/cn.png>
@@ -1565,7 +1574,7 @@ Overfull \hbox (44.55737pt too wide) in paragraph at lines 56--57
  []
 
 [9 <./resources/images/cn.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 74--79
+Underfull \hbox (badness 10000) in paragraph at lines 75--80
 
  []
 
@@ -1575,26 +1584,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 74--79
  (./src/4iteration1.tex [11
 
 
-]
-<resources/images/v2x_llc.jpg, id=391, 1220.56pt x 1606.0pt>
-File: resources/images/v2x_llc.jpg Graphic file (type jpg)
-
-<use resources/images/v2x_llc.jpg>
-Package pdftex.def Info: resources/images/v2x_llc.jpg used on input line 82.
-(pdftex.def)             Requested size: 244.10767pt x 321.19432pt.
- [12 <./resources/images/v2x_llc.jpg>]
-<resources/images/v2x_sm.jpg, id=404, 649.42625pt x 338.26375pt>
-File: resources/images/v2x_sm.jpg Graphic file (type jpg)
-
-<use resources/images/v2x_sm.jpg>
-Package pdftex.def Info: resources/images/v2x_sm.jpg used on input line 105.
-(pdftex.def)             Requested size: 519.5417pt x 270.61136pt.
-
-Overfull \hbox (49.78668pt too wide) in paragraph at lines 105--106
- [][] 
- []
-
-) [13 <./resources/images/v2x_sm.jpg>]
+]) [12]
 \openout2 = `src/5iteration2.aux'.
 
  (./src/5iteration2.tex
@@ -1648,14 +1638,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 5--32
  []
 
 
-<resources/images/architecture_BS_iteration2.png, id=410, 537.00626pt x 319.192
+<resources/images/architecture_BS_iteration2.png, id=367, 537.00626pt x 319.192
 5pt>
 File: resources/images/architecture_BS_iteration2.png Graphic file (type png)
  <use resources/images/architecture_BS_iteration2.png>
 Package pdftex.def Info: resources/images/architecture_BS_iteration2.png used o
 n input line 44.
 (pdftex.def)             Requested size: 429.60559pt x 255.35434pt.
- [14
+ [13
 
 
 ]
@@ -1663,7 +1653,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 65--67
 
  []
 
-<resources/images/control_plane.png, id=417, 661.47125pt x 304.13625pt>
+<resources/images/control_plane.png, id=372, 661.47125pt x 304.13625pt>
 File: resources/images/control_plane.png Graphic file (type png)
 
 <use resources/images/control_plane.png>
@@ -1675,37 +1665,37 @@ Overfull \hbox (59.4227pt too wide) in paragraph at lines 70--71
  [][] 
  []
 
-[15 <./resources/images/architecture_BS_iteration2.png>]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 106.
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 107.
- [16 <./resources/images/control_plane.png>] [17]) [18] [19]
+[14 <./resources/images/architecture_BS_iteration2.png>] [15 <./resources/image
+s/control_plane.png>]) [16]
 \openout2 = `src/6conclusion.aux'.
 
- (./src/6conclusion.tex) [20
+ (./src/6conclusion.tex) [17
 
-
-] [21
 
 ]
-(build/main.gls) 
+\openout2 = `src/perspectives.aux'.
+
+
+(./src/perspectives.tex) [18
+
+
+] [19
+
+] (build/main.gls)
+
 AED: lastpage setting LastPage
-[22]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 171.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 171.
+[20]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 176.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 176.
  (build/main.aux (build/src/title_page.aux) (build/src/acknowledgements.aux) (b
 uild/src/1introduction.aux) (build/src/2contexte.aux)
 (build/src/3etatdart.aux) (build/src/4iteration1.aux)
-(build/src/5iteration2.aux) (build/src/6conclusion.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 171.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 171.
+(build/src/5iteration2.aux) (build/src/6conclusion.aux)
+(build/src/perspectives.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 176.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 176.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 0F306DFE7F2049AB4CAAD5D5DF7E7F16;3310.
+(rerunfilecheck)             Checksum: 5ED87F6884D4E370299F972ECC568A48;3083.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -1715,13 +1705,13 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 24521 strings out of 493029
- 384491 string characters out of 6136234
- 915307 words of memory out of 5000000
- 27458 multiletter control sequences out of 15000+600000
- 17016 words of font info for 40 fonts, out of 8000000 for 9000
+ 22777 strings out of 493029
+ 362332 string characters out of 6136234
+ 904341 words of memory out of 5000000
+ 25747 multiletter control sequences out of 15000+600000
+ 15934 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 53i,12n,92p,7897b,2419s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 53i,12n,92p,1984b,1965s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/
 type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-supe
@@ -1729,15 +1719,13 @@ r/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1728.pfb></usr
 /share/texmf/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf/fonts/t
 ype1/public/cm-super/sfcc1200.pfb></usr/share/texmf/fonts/type1/public/cm-super
 /sfcc1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc2488.pfb></usr/
-share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts/ty
-pe1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/
-sfrm1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1728.pfb></usr/s
-hare/texmf/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texmf/fonts/typ
-e1/public/cm-super/sftt1200.pfb>
-Output written on build/main.pdf (27 pages, 1170695 bytes).
+share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/ty
+pe1/public/cm-super/sfrm1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/
+sfrm1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1200.pfb>
+Output written on build/main.pdf (27 pages, 754914 bytes).
 PDF statistics:
- 577 PDF objects out of 1000 (max. 8388607)
- 517 compressed objects within 6 object streams
- 124 named destinations out of 1000 (max. 500000)
- 416 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 471 PDF objects out of 1000 (max. 8388607)
+ 416 compressed objects within 5 object streams
+ 89 named destinations out of 1000 (max. 500000)
+ 382 words of extra memory for PDF output out of 10000 (max. 10000000)
 

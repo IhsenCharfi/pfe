@@ -1,5 +1,5 @@
 \section{Itération2: nouveau BS englobant TCP serveur}
-    \subsection{Conception}
+    \subsection{Spec}
     Cette partie repose sur la modification des exigences et la nouvelle Conception
         \subsubsection{L'évolution des exigences}
             Après avoir fait l’évaluation des résultats de performance 
@@ -98,106 +98,33 @@
             instances sera plus complexe. 
 
         
-        \begin{itemize}
-            \renewcommand{\labelitemi}{$\bullet$}
-            \item \textbf{Explicit Mutability}: Une variable est, par défaut,
-            immuable (invariable ? :)). Pour la faire varier le code doit la
-            déclarer explicitement mutable, avec le mot clé \textit{mut}.
-            \begin{lstlisting}[autogobble, language=Rust, style=boxed]
-                let a = 5;
-                a = 3; // Error, a not mutable
-                let mut a = 5;
-                a = 3; // OK
-            \end{lstlisting}
+       
 
-            \item \textbf{Ownership}: C'est un système de manipulation des données basé
-            sur le fait que chaque donnée a un propriétaire. Elle ne peut pas avoir
-            plusieurs propriétaires; par contre elle peut changer de propriétaire,
-            être consommée en quelque sorte; cette opération s'appelle un move.
-            Elle est effectuée sur les types qui n'implémentent pas le trait Copy.
-            \begin{lstlisting}[autogobble, language=Rust, style=boxed]
-                let a = SomeStruct::new();
-                let b = a;
-                a.use(); // Error, use after move
-            \end{lstlisting}
-
-            \item \textbf{Borrowing}: Une valeur \textit{owned} par une certaine variable
-            peut être "prêtée", par réference. Cela s'appelle le borrowing
-            et a des règles très strictes, enforcées par le \textbf{BorrowChecker}.
-            Une variable peut avoir une réference mutable ou plusieurs réferences
-            non-mutables.
-            \begin{lstlisting}[autogobble, language=Rust, style=boxed]
-                let a = SomeStruct::new();
-                let b = &a; // Ok
-                let mut c = &a; // Ok, the borrow itself is not mutable
-                let d = &mut a; // Error, immutable borrow still in context
-            \end{lstlisting}
-        \end{itemize}
-        \bigskip
-        Le but de cette explication est de montrer la différence considérable
-        avec d'autres langages de programmation. Un lecteur intéressé pourra
-        apprendre le langage pour plus d'informations.
-
-    \subsection{Implémentation}
         \subsubsection{Go un language pas POO}
-        Les bugs dans le code arrivent même avec les programmeurs les plus aptes.
-        \company{} ne fait pas exception à cette règle. Dans l'effort de minimiser
-        ces bugs le plus possible, \gls{mdi} a fait le choix de migrer vers Rust.
-        Trois nouveaux projets sont développés en Rust:
-        \begin{itemize}
-            \renewcommand{\labelitemi}{$\bullet$}
-            \item MD30, Un nouveau protocol de communication dongle-cloud
-            \item MEP, Morpheus event processor, un outil de programmation graphique
-            \item MSP, Morpheus signal processor, un moteur de traitement de signaux
-        \end{itemize}
-        \bigskip
-        Go présente un grand nombre d'avantages, mais aussi un grand nombre
-        d'inconvénients. Pour une personne qui fait de la programmation orientée
-        objets, s'adapter n'est pas trivial. Mais une fois on s'habitue aux
-        dynamiques de ce languages, on retrouve qu'il est assez flexible.\\[0.3cm]
-        Par contre, il faut s'attendre à se heurter à des bugs, de.... 
-        De même il faut être prêt à implémenter des bibliothèques rudimentales,..\\[0.3cm]
-        Ci-dessous un bilan des principaux avantages et inconvénients de Rust par
-        rapport à autres languages, notament C++.
+       
+       
 
         \subsubsection{Avantages}
             \begin{itemize}
                 \renewcommand{\labelitemi}{$\bullet$}
-                \item Garanties thread-safety
-                \item "Si \c ca compile, \c ca marche"
-                \item Communauté active
-                \item Bonne gestions de cas, pas de comportement indéterminé
-                \item Performances très bonnes
-                \item Gestion facile de bibliothèques (Cargo)
-                \item Cross-compilation facile (Cargo)
+                \item basé sur les librairies basiques
+                \item développé par Google donc un bon support 
                 \item Evolution du language
             \end{itemize}
 
         \subsubsection{Inconvénients}
             \begin{itemize}
                 \renewcommand{\labelitemi}{$\bullet$}
-                \item Instabilités compilateur, parfois dans la chaine stable
-                \item Manque d'expertises Rust en entreprise
-                \item Known issues sans perspectives de fixes
-                \item Manque d'optimisations spécifiques aux processeurs
-                \item Complexité de codes simples dans autres languages
-                \item Pas de programmation orientée objets
-                \item Dynamic dispatch très limité
-                \item Chaine de compilation non-optimale pour notre processeur
-                \item Communauté très jeune
-                \item Bibliothèques essentielles absentes
+                \item 
+                \item Pas de programmation orientée objets ou support pas standard
             \end{itemize}
 
     \subsection{Test }
-        Apprendre Rust était une très belle expérience. La réference principale
-        pour moi était le Rust book\cite{rust_book}. J'ai lu ce livre entier,
-        et suivi les examples. Il couvre assez succintement les détails du
-        language.\\[0.3cm]
-        Le Rustonomicon\cite{rust_unsafe_book} m'a servi de réference pour
+        Apprendre Go était une très belle expérience. La réference principale
+        pour moi était .... 
+       ... m'a servi de réference pour
         comprendre des concepts sur le fonctionnement interne du language.
-        \'Evidemment, pour profiter de Rust il m'a fallu éviter, le plus possible,
-        les syntaxes \textbf{unsafe}. En effet, je n'en ai eu besoin que pour les
-        s, et l'intégration avec .. Mais ce livre m'a aidé à
+     Mais ça m'a aidé à
         comprendre un certain nombre de problèmes auquels j'ai fait face, notament:
         \begin{itemize}
             \renewcommand{\labelitemi}{$\bullet$}
@@ -211,23 +138,12 @@
         \bigskip
         Il faut aussi dire que le bagage fourni par le cours de compilation à
         \establishment{} était d'une utilité exceptionnelle, surtout que
-        programmer en Rust, c'est virtuellement une conversation avec le
-        compilateur!\\[0.3cm]
+        programmer en Go, \\[0.3cm]
         Mais la piste principale pour l'apprentissage reste la pratique. Et avec
-        le projet \gls{msp} j'ai eu la chance de faire des fautes, réitérer,
+        le projet \gls{md30} j'ai eu la chance de faire des fautes, réitérer,
         apprendre des concepts et des patterns, et corriger, dans un cycle qui a
-        duré 4 mois. Les détails du code seront discutés dans la section
-        concernant ce projet.
+        duré 5 mois. 
 
     \subsection{Amélioration à effectuer}
         Data plane .. 
-        Rust étant un langage très jeune, j'ai saisi l'opportunité pour contribuer
-        à son développement, que ce soit en discutant avec la communauté, et en
-        proposant des idées dans les issues (sur github), ou en publiant des crates sur
-        crates.io\cite{crates_io}. Malgré mon désir de le faire, je n'ai pas eu
-        le temps, jusqu'aujourd'hui, de contribuer au projet du language même.\\[0.3cm]
-        Durant le projet \gls{msp}, j'ai publié le crate
-        "ts-mem-pool"\cite{mem_pool}, développé dans le cadre de ce projet.
-        C'est une simple implémentation de memory pool léger, générique et avec
-        des élements thread-safe. J'ai aussi écrit, avec un collègue, un binding
-        en Rust pour la bibliothèque iir1\cite{iir1}, qui attend encore sa publication.
+        

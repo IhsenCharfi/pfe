@@ -33,78 +33,8 @@
       \field{note}{Documentation technique sur le cycle itératif}
       \field{title}{\href{http://www.geek-directeur-technique.com/2009/02/06/le-cycle-iteratif}{www.geek-directeur-technique.org}}
     \endentry
-    \entry{marben_site}{online}{}
-      \field{sortinit}{0}
-      \field{sortinithash}{990108227b3316c02842d895999a0165}
-      \field{labeltitlesource}{title}
-      \field{note}{Site officiel pour les produits Marben}
-      \field{title}{\href{https://www.marben-products.com/}{www.marben-products.com}}
-    \endentry
-    \entry{vera_doc}{online}{}
-      \field{sortinit}{0}
-      \field{sortinithash}{990108227b3316c02842d895999a0165}
-      \field{labeltitlesource}{title}
-      \field{note}{Documentation technique de la serie Vera-P1}
-      \field{title}{\href{https://www.u-blox.com/sites/default/files/VERA-P1_ProductSummary_\%28UBX-16030949\%29.pdf}{www.u-blox.org}}
-    \endentry
-    \entry{wave_spec}{online}{}
-      \field{sortinit}{0}
-      \field{sortinithash}{990108227b3316c02842d895999a0165}
-      \field{labeltitlesource}{title}
-      \field{note}{WAVE and WSMP description}
-      \field{title}{\href{http://www.indjst.org/index.php/indjst/article/viewFile/34355/27974}{www.indjst.org}}
-    \endentry
-    \entry{v2x_spec}{online}{}
-      \field{sortinit}{0}
-      \field{sortinithash}{990108227b3316c02842d895999a0165}
-      \field{labeltitlesource}{title}
-      \field{note}{Cet article définit les normes du protocole V2X}
-      \field{title}{\href{https://www.etsi.org/deliver/etsi_tr/101600_101699/101607/01.01.01_60/tr_101607v010101p.pdf}{www.etsi.org}}
-    \endentry
-    \entry{rust_book}{online}{}
-      \field{sortinit}{0}
-      \field{sortinithash}{990108227b3316c02842d895999a0165}
-      \field{labeltitlesource}{title}
-      \field{note}{The Rust Programming Language Book}
-      \field{title}{\href{https://doc.rust-lang.org/book/second-edition/index.html}{Rust book}}
-    \endentry
-    \entry{rust_unsafe_book}{online}{}
-      \field{sortinit}{0}
-      \field{sortinithash}{990108227b3316c02842d895999a0165}
-      \field{labeltitlesource}{title}
-      \field{note}{A book about unsafe and advanced Rust}
-      \field{title}{\href{https://doc.rust-lang.org/nomicon/README.html}{Rustonomicon}}
-    \endentry
-    \entry{variance_wiki}{online}{}
-      \field{sortinit}{0}
-      \field{sortinithash}{990108227b3316c02842d895999a0165}
-      \field{labeltitlesource}{title}
-      \field{note}{Article wikipédia sur la variance en informatique}
-      \field{title}{\href{https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)}{Data structure Variance}}
-    \endentry
-    \entry{crates_io}{online}{}
-      \field{sortinit}{0}
-      \field{sortinithash}{990108227b3316c02842d895999a0165}
-      \field{labeltitlesource}{title}
-      \field{note}{Répertoire principal des crates Rust}
-      \field{title}{\href{https://crates.io/}{www.crates.io}}
-    \endentry
-    \entry{mem_pool}{online}{}
-      \field{sortinit}{0}
-      \field{sortinithash}{990108227b3316c02842d895999a0165}
-      \field{labeltitlesource}{title}
-      \field{note}{Crate Memory pool développé pour MSP}
-      \field{title}{\href{https://github.com/Michel-Haber/ts-mem-pool}{ts-mem-pool}}
-    \endentry
-    \entry{iir1}{online}{}
-      \field{sortinit}{0}
-      \field{sortinithash}{990108227b3316c02842d895999a0165}
-      \field{labeltitlesource}{title}
-      \field{note}{Une bibliothèque contenant des implementations de filtres IIR divers}
-      \field{title}{\href{https://github.com/berndporr/iir1}{LibIir1}}
-    \endentry
   \endsortlist
-  \missing{rust_site}
+  \missing{variance_wiki}
 \endrefsection
 \endinput
 
