@@ -3,18 +3,31 @@
    au cours du temps ce qui éclaircirera le besoin de la création du nouveau composant 
    point d entrée.  
 
-    \subsection{Le premier Cloud de MDI}
-        Les boîtiers ont la particularité de s’intégrer dans tout type de véhicule et permettent
-       l’émission, la réception, le traitement et la représentation de données diverses comme
-       l'état de la batterie du véhicule, les données standards, les données du propriétaire du
-       véhicule ou des données des capteurs du boîtier même (localisation GPS,
-       l’accéléromètre, le gyroscope, la consommation de la batterie ...)et un tas d'autres informations complémentaires.
-       Ces données là ont besoin d'être traité pour pouvoir en sortir de l'information utile, d'où le besoin de services divers, regroupés 
-       dans un cloud. \\ [0.3cm]
+   \subsection{Evolution des clouds \gls{mdi}}
+   Les boîtiers \gls{obd} ont la particularité de s’intégrer dans tout type de véhicule et permettent
+   l’émission, la réception, le traitement et la représentation de données diverses comme
+   l'état de la batterie du véhicule, les données standards, les données du propriétaire du
+   véhicule ou des données des capteurs du boîtier même (localisation GPS,
+   l’accéléromètre, le gyroscope, la consommation de la batterie ...)et un tas d'autres informations complémentaires.
+   Ces données là ont besoin d'être traité pour pouvoir en sortir de l'information utile, d'où le besoin de services divers, regroupés 
+   dans un cloud. \\ [0.3cm]
+     \begin{figure}[ht]
+        \centering
+        \includegraphics[scale=0.4]{\images/existant2.png}
+        \caption{Communication avec le cloud}
+    \end{figure}
+        
+        Le Cloud collecte les informations des véhicules récoltés par ces produits intégrés, traite et stocke ces 
+   derniers et communique avec les serveurs clients externes.\\[0.3cm]
+
+
+    \subsubsection{Le premier Cloud de MDI}
+       
     
          Le CloudConnect - ou \gls{CC} - est le premier cloud fait maison de \gls{mdi} qui englobe un ensemble 
-        de services pour les clients. Créé en .., \gls{CC} traite 
-        jusqu'à présent un nombre important du traitement des données.
+        de services pour les clients. Créé en ..et hebergés dans des serveurs d'OVH, \gls{CC} traite 
+        jusqu'à présent un nombre important du traitement des données. CloudConnect propose également un écosystème d’applications partenaires (gestion de flottes, ecodriving…) 
+        mais aussi des services connectés par l’intermédiaire de partenaires. \\
         L'architecture globale de ce cloud est comme le montre  le shema suivant: 
 
         \begin{figure}[ht]
@@ -23,42 +36,61 @@
             \caption{L'architecture de CloudConnect - \gls{CC}}
         \end{figure}
 
-        CloudConnect comporte plusieurs composants : 
+        Pour des raisons de confidentialité ce schema a été simplifié. Néanmoins, il présente les principaux composants de CloudConnect. 
+        Parmi ces coposants on trouve : \\[0.3cm]
         \begin{itemize}
             \renewcommand{\labelitemi}{$\bullet$}
-            \item  un \gls{BS} qui est le composant d'échange de messages entre le cloud et 
-            les OBD. Il consiste le point d'entrée du cloud et qui est le composant à redéfinir.
-            \item  un broker de message pour les systèmes Big Data: 
-            \item  un ensemble de services qui sont accéder à partir de APIV3 
-            \item une base de données pour le stockage des données 
-            \item un dashboard pour l affichage des données et l acces visuel 
+            \item  un \textbf{\gls{BS}} qui est le composant d'échange de messages entre le cloud et 
+            les OBD. Il présente le point d'entrée du cloud et représente le composant en question. Il supporte \gls{mdi21}, le protocole
+            de l'entreprise conçu pour la communication entre boîtiers et Cloud.
+            Nous détaillerons bien ce composant à la fin de ce chapitre.        \vspace{0.2cm}
+
+            \item  un  \textbf{ broker de messge :} pour les systèmes Big Data. C'est un système distribué très répandu dans le domaine de BigData centralisant le flux de données provenant 
+            des différents systèmes de l'entreprise tout en gardant le découplage entre les systèmes producteurs de ceux consommateurs de données.\\ 
+            Le point fort de cet outil est sa capacité de supporter des débits très importants que ce soit pour 
+            la publication ou la lecture des données. D'autres part, ce broker permet la consommation des données en temps réel et en mode batch, 
+            en persistant les données. Il est à noter que les données ne sont pas stockés dans ce système, ils sont là jusqu'à leurs consomattion. 
+            D'où le besoin d'une base de données.         \vspace{0.2cm}
+
+            \item une \textbf{base de données NoSQL} orienté documents pour le stockage des données jusqu'à 3 mois.         \vspace{0.2cm}
+
+            \item  un ensemble de services qui sont accéder à partir de \textbf{API-V3}:         \vspace{0.2cm}
+
+            \item un \textbf{dashboard} pour l'affichage des données et l acces visuel 
             des services au clients 
         \end{itemize}
         \vspace{0.2cm}
 
-        \gls{mdi21} est le protocole  ASN1 fait maison, conçu pour la communication entre boîtiers et Cloud.
-        Ce protocole sera bien détaillé à la fin de ce chapitre.
 
+        Il est bien de noter que l'équipe serveur de \gls{mdi} veille à ce que sa politique de récupération des données 
+        respecte la nouvelle réglementation de \gls{gdpr}\cite{gdpr}. \\ [0.3cm]
+      
     
-    \subsection{De \gls{CC} à \gls{CN}}
-        Exprimer le besoin du changement d'architecture. 
-        Autour de .. \\
-        \textbf{Développement des agents :} Un Framework interne est utilisé pour simplifier le développement des différents 
+    \subsubsection{De \gls{CC} à \gls{CN}}
+
+       Bien que le CloudConnect parraît complet. Il présente quelques problématiques au niveau de : 
+       \begin{itemize}
+        \renewcommand{\labelitemi}{$\bullet$}
+            \item \textbf{Développement des agents :} Un Framework interne est utilisé pour simplifier le développement des différents 
         agents en langage ruby. Ce framework fournit un ensemble de fonctions qui permettent, entre autres, d’accéder au 
         courtier de messages en lecture et en écriture. Concernant les agents à état, le framework ne fournit pas 
         de mécanismes pour simplifier la gestion de leurs états. La gestion de l’état est donc laissée aux développeurs.\\[0.3cm]
-        \textbf{Déploiement des agents :} les agents sont exécutés de manière parallèle. En d’autres termes, un agent peut avoir 
+            \item \textbf{Déploiement des agents :} les agents sont exécutés de manière parallèle. En d’autres termes, un agent peut avoir 
         plusieurs instances déployées dans différentes machines. Les différentes instances d’un même agent partagent 
         le traitement du flux des événements mais ne communiquent pas entre eux. Le déploiement ainsi que la maintenance 
         d’un agent se traduisent par une mise-à-jour des fichiers de configuration des machines exécutant l’agent via le logiciel Chef.\\ [0.3cm]
+    \end{itemize}
 
-        Solution :  Création d‘un autre Cloud afin de revoir l’architecture logicielle et technique de Cloud 
-        Connect afin de simplifier le développement des agents, leurs déploiements ainsi que leurs maintenances et 
-        de permettre à des développeurs externes de l’entreprise de coder leurs propres agents.
+         Comme solution à ces problèmes, \gls{mdi} a eu recours à la création d‘un autre Cloud afin de revoir l’architecture 
+        logicielle et technique de CloudConnect afin de simplifier le développement des agents, leurs déploiements 
+        ainsi que leurs maintenances et de permettre à des développeurs externes de l’entreprise de coder leurs propres agents.\\
+        L'entreprise a créé alors sa propre infrastructure adaptée aux données de la télématique appelée « CloudNext » - ou  \gls{CN} 
+        dont l’objectif est de se diriger vers une infrastructure orientée containers qui rend plus facile l’intégration de 
+        solutions développées par les clients de l’entreprise et permet de diversifier ses activités.\\ [0.3cm] 
+        L'architecture simplifié du \gls{CN} est comme le montre la figure ci-dessosu : 
 
 
-
-        \begin{figure}[ht]
+        \begin{figure}[h!]
             \centering
             \includegraphics[scale=0.4]{\images/cn.png}
             \caption{L'architecture du cloud avec CloudNext}
@@ -66,24 +98,66 @@
 
         \vspace{0.2cm}
 
-       \break
+        résente les principaux composants de CloudConnect. 
+        Parmi ces coposants on trouve : \\[0.3cm]
+        \begin{itemize}
+            \renewcommand{\labelitemi}{$\bullet$}
+                \item \textbf{Shovel :} Il traduit les informations du format “MessagePack” au format “Protobuf”.
+                \item \textbf{Routeur :} Il assigne chaque track à un agent.
+                \item \textbf{Connecteur :} Il gère les états des stateful agents 
+                \item \textbf{Pod :} Les pods de Kubernetes
+                \item \textbf{Butler :}
+                \item \textbf{Agent :} Un service Cloud
+            \end{itemize} 
 
-       
+            Pour faciliter la communication entr les agents, \gls{CC} migre vers un format de message de MsgPack  vers ProtoBuffer 
 
-        \subsection{Voyons le BS actuel}
+***********Expliquer différence entre MsgPack et ProtoBuffer *******
+        \break
+
+    \subsection{le BS \gls{mdi21} de plus pres}
 
         \subsubsection{technologies}
-        Redis , Indigen ..., fonctionnalités 
-        \subsubsection{Protocole md 21 }
+        Redis , Indigen ..., fonctionnalités \\
+        Cet agent est codé en Erlang, c’est un problème pour la garantie de la maintenance future.
+        Erlang perds de son intérêt pour 2 raisons:
+            L'élasticité de la VM n’est plus utile avec Docker et Kubernetes
+            Le chargement à chaud des nouvelles versions et la coexistence avec les anciennes version est aussi 
+            disponible avec Docker et Kubernetes
+
+        Le BS ecrit dans RQueue et le Shovel copie de RQueue vers Kafka. donc il n'écrit pas directement dans le broker de message de CloudNext.
+
+
+        Les informations de session sont dans redis (socket permanente).
+        Les informations statiques (fields, channels, paramètres des accounts) sont récupérés depuis les apis (web services) - c’est une action rare.
+        De plus les changements en DB sont notifiés au BS via Kafka.
+
+        \subsubsection{Format de données}
+        Les informations remontées par les boîtiers sont considérées comme des évènements. Ces évenement peuvent contenir 
+        des tracks , des messages et/ou des présences.
+
+        Track : informations géolocalisées envoyés depuis le boitier au Cloud et qui sont les données remontés des capteurs traités par les OBD. \\
+        Message : informations plus compléte qui se dirige vers un channel précis, invoqué depuis le serveur vers le boitier.\\
+        Presence : état du boitier, si il est connecté au serveur ou pas.\\
         
 
-        Format des données.
-        Format , 
+        \subsubsection{Transmission boitier-serveur }
+        La transmission se fait en utilisant le protocole MD21. MD21 est une logique in-house de séquence 
+        ainsi qu’un encodage décrit en ASN.1.\\
+        Ce protocole fonctionne en TCP et en UDP. L’UDP n’est que rarement - sinon jamais - utilisé étant 
+        donné que les opérateurs téléphonique ne le favorise pas, voire rendent son utilisation impossible correctement.
+        L’utilisation d’UDP nécessite en parallèle un lien TCP.
+        Le lien est à l’initiative du boîtier,c'est à dire que le boitier qui doit se connecter en premier au serveur en passant par le \gls{BS}
+        La sécurité du lien est demandée par le boîtier au serveur et supporte les modèles récents (TLS 1.2).
+        Une limitation actuelle, c’est que les transaction ne sont pas identifiées et que le serveur ne peut donc pas indiquer 
+        au boîtier un index unique du dernier track traite. De ce fait, le boitier re-envoi tous les track qui n’ont pas été 
+        acknowledged et on a des rejeu de données.
 
-        Track : 
-        Message : 
-        Presence : 
-        
+
+
+
+
+       
 
 
         Paragraphe sur le language Go : 
@@ -97,4 +171,3 @@
         avec d'autres langages de programmation. Un lecteur intéressé pourra
         apprendre le langage pour plus d'informations.
 
-        MD30, Un nouveau protocol de communication dongle-cloud
