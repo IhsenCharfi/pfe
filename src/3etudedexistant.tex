@@ -27,15 +27,17 @@
          Le CloudConnect - ou \gls{CC} - est le premier cloud fait maison de \gls{mdi} qui englobe un ensemble 
         de services pour les clients. Créé en ..et hebergés dans des serveurs d'OVH, \gls{CC} traite 
         jusqu'à présent un nombre important du traitement des données. CloudConnect propose également un écosystème d’applications partenaires (gestion de flottes, ecodriving…) 
-        mais aussi des services connectés par l’intermédiaire de partenaires. \\
-        L'architecture globale de ce cloud est comme le montre  le shema suivant: 
+        mais aussi des services connectés par l’intermédiaire de partenaires. \\ [0.2cm]
+        L'architecture globale de ce cloud est présenté par le shema de la figure \ref{fig:cc} de la page \pageref{fig:cc}.
 
         \begin{figure}[ht]
             \centering
             \includegraphics[scale=0.4]{\images/cc.png}
             \caption{L'architecture de CloudConnect - \gls{CC}}
+            \label{fig:cc}
         \end{figure}
 
+        \break
         Pour des raisons de confidentialité ce schema a été simplifié. Néanmoins, il présente les principaux composants de CloudConnect. 
         Parmi ces coposants on trouve : \\[0.3cm]
         \begin{itemize}
@@ -87,30 +89,33 @@
         L'entreprise a créé alors sa propre infrastructure adaptée aux données de la télématique appelée « CloudNext » - ou  \gls{CN} 
         dont l’objectif est de se diriger vers une infrastructure orientée containers qui rend plus facile l’intégration de 
         solutions développées par les clients de l’entreprise et permet de diversifier ses activités.\\ [0.3cm] 
-        L'architecture simplifié du \gls{CN} est comme le montre la figure ci-dessosu : 
+        L'architecture simplifié du \gls{CN} est présenté par la figure \ref{fig:cn} dasn la page \pageref{fig:cn}.
 
 
         \begin{figure}[h!]
             \centering
             \includegraphics[scale=0.4]{\images/cn.png}
             \caption{L'architecture du cloud avec CloudNext}
+            \label{fig:cn}
         \end{figure}
 
         \vspace{0.2cm}
 
-        résente les principaux composants de CloudConnect. 
-        Parmi ces coposants on trouve : \\[0.3cm]
+        Dans le nouveau cloud on trouve d'autres composants nouveaux. 
+        Parmi eux on trouve : \\[0.3cm]
         \begin{itemize}
             \renewcommand{\labelitemi}{$\bullet$}
-                \item \textbf{Shovel :} Il traduit les informations du format “MessagePack” au format “Protobuf”.
-                \item \textbf{Routeur :} Il assigne chaque track à un agent.
-                \item \textbf{Connecteur :} Il gère les états des stateful agents 
-                \item \textbf{Pod :} Les pods de Kubernetes
-                \item \textbf{Butler :}
-                \item \textbf{Agent :} Un service Cloud
+                \item \textbf{Shovel :} Il traduit les informations du format “MessagePack” au format “Protobuf”.\\
+                \item \textbf{Routeur :} Il assigne chaque track à un agent.\\
+                \item \textbf{Connecteur :} Il gère les états des stateful agents\\ 
+                \item \textbf{Pod :} Les pods de Kubernetes\\
+                \item \textbf{Butler :} \\
+                \item \textbf{Agent :} Un service Cloud \\
             \end{itemize} 
 
             Pour faciliter la communication entr les agents, \gls{CC} migre vers un format de message de MsgPack  vers ProtoBuffer 
+
+            \vspace{0.2cm}
 
 ***********Expliquer différence entre MsgPack et ProtoBuffer *******
         \break
@@ -134,21 +139,22 @@
 
         \subsubsection{Format de données}
         Les informations remontées par les boîtiers sont considérées comme des évènements. Ces évenement peuvent contenir 
-        des tracks , des messages et/ou des présences.
-
-        Track : informations géolocalisées envoyés depuis le boitier au Cloud et qui sont les données remontés des capteurs traités par les OBD. \\
-        Message : informations plus compléte qui se dirige vers un channel précis, invoqué depuis le serveur vers le boitier.\\
-        Presence : état du boitier, si il est connecté au serveur ou pas.\\
-        
+        des tracks , des messages et/ou des présences.\\
+        \begin{itemize}
+            \renewcommand{\labelitemi}{$\bullet$}
+            \item \textbf{Track :} informations géolocalisées envoyés depuis le boitier au Cloud et qui sont les données remontés des capteurs traités par les OBD. \\
+            \item \textbf{Message :} informations plus compléte qui se dirige vers un channel précis, invoqué depuis le serveur vers le boitier.\\
+            \item \textbf{Presence :} état du boitier, si il est connecté au serveur ou pas.\\
+        \end{itemize}
 
         \subsubsection{Transmission boitier-serveur }
         La transmission se fait en utilisant le protocole MD21. MD21 est une logique in-house de séquence 
-        ainsi qu’un encodage décrit en ASN.1.\\
-        Ce protocole fonctionne en TCP et en UDP. L’UDP n’est que rarement - sinon jamais - utilisé étant 
+        ainsi qu’un encodage décrit en \gls{asn1}\\
+        Ce protocole fonctionne en TCP et en UDP. L’UDP n’est que rarement utilisé étant 
         donné que les opérateurs téléphonique ne le favorise pas, voire rendent son utilisation impossible correctement.
-        L’utilisation d’UDP nécessite en parallèle un lien TCP.
+        L’utilisation d’UDP nécessite en parallèle un lien TCP.\\
         Le lien est à l’initiative du boîtier,c'est à dire que le boitier qui doit se connecter en premier au serveur en passant par le \gls{BS}
-        La sécurité du lien est demandée par le boîtier au serveur et supporte les modèles récents (TLS 1.2).
+        La sécurité du lien est demandée par le boîtier au serveur et supporte les modèles récents (TLS 1.2).\\
         Une limitation actuelle, c’est que les transaction ne sont pas identifiées et que le serveur ne peut donc pas indiquer 
         au boîtier un index unique du dernier track traite. De ce fait, le boitier re-envoi tous les track qui n’ont pas été 
         acknowledged et on a des rejeu de données.
@@ -160,14 +166,4 @@
        
 
 
-        Paragraphe sur le language Go : 
-        Go est un jeune language de programmation système
-        fascinant. Ce language compilé hérite des idées des paradigmes de
-        programmation impérative et fonctionnelle. Il définit des concepts et
-        des règles qui assurent à l'utilisateur des binaires .\\[0.3cm]
        
-      
-        Le but de cette explication est de montrer la différence considérable
-        avec d'autres langages de programmation. Un lecteur intéressé pourra
-        apprendre le langage pour plus d'informations.
-
