@@ -19,7 +19,6 @@
 \usepackage[labelsep=colon]{caption}
 \usepackage{csquotes}
 \usepackage{pdfpages}
-\usepackage{listings, listings-rust}
 \usepackage{lstautogobble}
 
 %------------------------------------------------------------------------------%
@@ -79,7 +78,6 @@
 
 % Special definiton for footer
 \lfoot{\textsc{\company}}
-\cfoot{\textsc{\audience}}
 \rfoot{\thepage}
 
 % Set header and footer rules
@@ -135,6 +133,10 @@
 	% Create table of contents
 	\addcontentsline{toc}{section}{Sommaire}
 	\tableofcontents
+	\pagebreak
+	\listoffigures
+	\pagebreak
+	\listoftables
 
 	\pagebreak
 
@@ -152,6 +154,9 @@
 	\include{\sources/5iteration2}
 
 	\include{\sources/6conclusion}
+
+	\include{\sources/perspectives}
+
 
 	\pagebreak
 
