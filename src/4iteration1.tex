@@ -124,6 +124,44 @@
             Tous ceci ont été vérifié en résumant dans le tableau suivant : 
 
     \subsection{Tests \& Performance}
+    \subsubsection{Virtualisation avec Docker}
+    À l’aide de conteneurs, tout ce qui est nécessaire pour faire exécuter un logiciel est emballé
+    dans des conteneurs isolés. Contrairement aux machines virtuelles, les conteneurs ne regroupent
+    pas un système d’exploitation complet : seules les bibliothèques et les paramètres requis pour
+    que le logiciel fonctionne sont nécessaires.\\
+    Cela permet d’avoir des systèmes autonomes, légers et garantit que les logiciels fonctionne-
+    ront toujours de la même manière, quel que soit l’endroit où ils sont déployés.
+
+    \textbf{Docker}
+    Docker est une technologie, un "runtime" pour les conteneurs. Il est aussi une plate-forme
+    pour le développement, l’expédition et l’exécution d’applications. Il permet de séparer
+    les applications de l’infrastructure afin de livrer rapidement un logiciel. \\
+
+    Avec Docker, on gère l’infrastructure de la même façon qu’on gère les applications.
+    En profitant des méthodologies de Docker pour l’expédition, le test et le déploiement rapide
+    du code, on peut réduire considérablement le délai entre l’écriture du code et l’exécuter en
+    production.\\
+    \textbf{Comment docker construit ces conteneurs isolés ?} \\
+    \begin{itemize}
+        \item \textbf{Isolation du système de fichiers} : chaque conteneur s’exécute dans un système de fichiers
+        racine complètement distinct.
+        \item \textbf{Isolation des ressources} : les ressources système comme CPU et mémoire peuvent être
+        attribuées différemment à chaque conteneur.  Ceci présente la principale motivation pour tester les performances de chaque composant.
+        \item \textbf{Isolation de réseau}  : chaque conteneur de processus s’exécute dans son propre espace de
+        noms de réseau, avec une interface virtuelle et une adresse IP propre.
+    \end{itemize}
+
+    la figure .. montre l’optimisation en ressources qu’offre la virtualisation avec la technologie
+    des conteneurs par rapport à la technologie de machine virtuelle et hyperviseur.
+
+    \begin{figure}[ht]
+        \centering
+        \includegraphics[scale=0.6]{\images/dockervsvirt.png}
+        \caption{L'optimisation de docker par rapport à la machine }
+    \end{figure}
+
+    \subsubsection{Evaluation}
+
     Après avoir fini le développement et les tests de la première itération. 
     On évalue le système par rapport à nos exigences globaux du système. 
     Néanmoins lors de cette évaluation on est face à plusieurs problématiques qu il faut pas négliger. 
@@ -141,7 +179,7 @@
 
 
 
-    \textbf{Evaluation :}
+    \textbf{Synthèse :}
     Cette première itération nous a prouvé la limite de MQTT pour le projet MD30. Elle sert comme une étude 
     sur la faisabilité d'intégration du standard dans le projet.
     La question qui se pose est , quelles sont les fonctionnalités MQTT que MD30 exige par rapport aux 
