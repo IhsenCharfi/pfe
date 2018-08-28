@@ -71,42 +71,40 @@
 
             \subsubsection{Control plane}
              Concernant le flux de données ou Control plane, la communication entre 
-             ces processus se fait comme le présente la figure ci-dessous: \\
+             ces processus se fait comme le présente la figure \ref{Figure : controlplane}. \\
 
              \begin{figure}[ht]
                 \centering
                 \includegraphics[scale=0.8]{\images/control_plane.png}
                 \caption{Le flux de données du BS de l'itération 2}
-                \label{Figure }
+                \label{Figure : controlplane}
             \end{figure}
 
+            \begin{itemize}
+                \renewcommand{\labelitemi}{$\bullet$}
+                \item \textbf{Le boitier envoie un track pour le cloud:} \\
+                La première connexion se fait avec le TCP Listener. 
+                Comme son nom l’indique, ce composant écoute, vérifie et  maintient la 
+                connexion avec les boîtiers. Il est considéré comme le Générateur. 
+                Après avoir vérifier la connexion avec un boitier donné, il envoie le 
+                message reçu au processus de traitement dans un channel. \\
+                Ce dernier décode le format du message et l’encode en format des données du 
+                cloud. Ensuite il le met dans un buffer des messages prêts à la publication 
+                kafka. Puis le client kafka envoie tous les messages du buffer d’une manière 
+                périodique de quelques secondes.\\ 
+                L’envoi des messages d’une manière périodique minimise l'accès 
+                écriture dans la BD ce qui augmente l’efficacité du traitement global. \\
+                \item \textbf{ Le cloud envoie un event au boîtier:} \\
+                Le service qui a déclenché l’event va publier dans le broker des messages le 
+                message dans un topic spécifique. Le client consommateur est toujours en écoute sur ce topic, 
+                il reçoit le message et l'envoie directement au traitement. Le message s’encode avec le format 
+                protobuf du boitier est maintenant prêt à être envoyer au boîtier. Le TCP listener s’occupe alors 
+                de son envoi à son boitier. \\
+                Il est à noter que l'implémentation de cet envoi par rapport à plusieurs 
+                instances sera plus complexe. 
+            \end{itemize}
+            
 
-            * Le boitier envoie un track pour le cloud: 
-
-
-            La première connexion se fait avec le TCP Listener. 
-            Comme son nom l’indique, ce composant écoute, vérifie et  maintient la 
-            connexion avec les boîtiers. Il est considéré comme le Générateur. 
-            Après avoir vérifier la connexion avec un boitier donné, il envoie le 
-            message reçu au processus de traitement dans un channel. \\
-            Ce dernier décode le format du message et l’encode en format des données du 
-            cloud. Ensuite il le met dans un buffer des messages prêts à la publication 
-            kafka. Puis le client kafka envoie tous les messages du buffer d’une manière 
-            périodique de quelques secondes.\\ 
-            L’envoi des messages d’une manière périodique minimise l'accès 
-            écriture dans la BD ce qui augmente l’efficacité du traitement global. 
-
-            *  Le cloud envoie un event au boîtier: 
-            Le service qui a déclenché l’event va publier dans le broker des messages le 
-            message dans un topic spécifique. Le client consommateur est toujours en écoute sur ce topic, 
-            il reçoit le message et l'envoie directement au traitement. Le message s’encode avec le format 
-            protobuf du boitier est maintenant prêt à être envoyer au boîtier. Le TCP listener s’occupe alors 
-            de son envoi à son boitier. \\
-            Il est à noter que l'implémentation de cet envoi par rapport à plusieurs 
-            instances sera plus complexe. 
-
-        
-       
 
         \subsubsection{Go un language différent}
        
@@ -117,50 +115,35 @@
         des règles qui assurent à l'utilisateur des binaires .\\[0.3cm]
        
       
-        Le but de cette explication est de montrer la différence considérable
-        avec d'autres langages de programmation. Un lecteur intéressé pourra
-        apprendre le langage pour plus d'informations.
+        Plusieurs notions de Go ont été implémenté dans le projet \gls{md30}. Parmi ces notions et Patterns :
 
-        {Avantages}
-            \begin{itemize}
-                \renewcommand{\labelitemi}{$\bullet$}
-                \item basé sur les librairies basiques
-                \item développé par Google donc un bon support 
-                \item Evolution du language
-            \end{itemize}
+        \begin{itemize}
+            \item les Goroutines: Une fonction indépendante en cours d'exécution qui est lancé par une instruction go. 
+            Cette goroutine possède sa propre call stack, qui se développe et se réduit comme requiers.
+            Une goroutine est faible en cout. donc le fait de lancer des centaines voire des milliers n'est pas couteux.
+            Une goroutine nest pas un thread ... Dans un programme go on peu trouver un seul thread avec plusieurs goroutines.\\
 
-        {Inconvénients}
-            \begin{itemize}
-                \renewcommand{\labelitemi}{$\bullet$}
-                \item 
-                \item Pas de programmation orientée objets ou support pas standard
-            \end{itemize}
+            \item la gestion Data race : \\
+
+            \item Go conccurency pattern: Pipeline : Les primitives de concurrence de Go facilite la construction 
+            des data streaming qui prouve l’efficacité d utilisation des I/O avec multiple CPUs. 
+            Il n existe pas une définition formelle de pipeline. c’est une parmi plusieurs type de programme concurrentiel. D'une façon générale , une pipeline est une série d’étapes connectés par une “channel”, chaque étape est un groupe de goroutines qui exécute la même fonction. 
+            Chaque étape les goroutines:
+
+                    reçoivent une valeur de upstream depuis les channels de lectures
+                    effectuent un certain traitement de fonctions sur cette valeur qui produit de nouvelle valeur 
+                    envoient les nouvelles valeurs downstream pour les channels d’écriture
+
+
+
+        \end{itemize}
 
     \subsection{Test }
-        Apprendre Go était une très belle expérience. La réference principale
-        pour moi était .... 
-       ... m'a servi de réference pour
-        comprendre des concepts sur le fonctionnement interne du language.
-     Mais ça m'a aidé à
-        comprendre un certain nombre de problèmes auquels j'ai fait face, notament:
-        \begin{itemize}
-            \renewcommand{\labelitemi}{$\bullet$}
-            \item La notion de variance de structur
-            \item Les erreurs de lifetimes
-            \item Coercions de types
-            \item Le unwind de threads
-            \item Les phantom data
-            \item Drop et l'utilisation de \textbf{Option} dans des cas spéciaux
-        \end{itemize}
-        \bigskip
-        Il faut aussi dire que le bagage fourni par le cours de compilation à
-        \establishment{} était d'une utilité exceptionnelle, surtout que
-        programmer en Go, \\[0.3cm]
-        Mais la piste principale pour l'apprentissage reste la pratique. Et avec
-        le projet \gls{md30} j'ai eu la chance de faire des fautes, réitérer,
-        apprendre des concepts et des patterns, et corriger, dans un cycle qui a
-        duré 5 mois. 
+       
+
+    Les tests unitaires ... 
+    k8s ... 
 
     \subsection{Amélioration à effectuer}
-        Data plane .. 
+        Data plane et l intégration du bon protobuf.. 
         
