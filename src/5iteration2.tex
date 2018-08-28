@@ -1,7 +1,9 @@
 \section{Itération2: nouveau BS englobant TCP serveur}
     \subsection{Spec}
+    
     Cette partie repose sur la modification des exigences et la nouvelle Conception
         \subsubsection{L'évolution des exigences}
+       
             Après avoir fait l’évaluation des résultats de performance 
             de la 1ere itération du projet, on a redéfinit les spécifications du projet. 
             Le tableau suivant montre la différence des exigences entre les deux itérations:
@@ -29,7 +31,13 @@
             \caption{Tableau de comparaison des exigences du projet}
             \label{table:1}
         \end{table} \\
-    
+        La spécification téchnique peut être divisée en deux parties:
+        \begin{itemize}
+            \renewcommand{\labelitemi}{$\bullet$}
+            \item La spec technique du protocole
+            \item La spec ajoutée par \gls{mdi} pour adapter le protocole au besoin
+        \end{itemize}
+        \bigskip
         L’une des majeurs modifications est d'abandonner l’intégration du standard MQTT 
         tel qu il est . On ne garde que le Header de MQTT comme le Header des messages 
         échangés avec le nouveau tcp serveur. Ceci a pour but de garder la compatibilité 
@@ -100,9 +108,18 @@
         
        
 
-        \subsubsection{Go un language pas différent}
+        \subsubsection{Go un language différent}
        
+        Paragraphe sur le language Go : 
+        Go est un jeune language de programmation système
+        fascinant. Ce language compilé hérite des idées des paradigmes de
+        programmation impérative et fonctionnelle. Il définit des concepts et
+        des règles qui assurent à l'utilisateur des binaires .\\[0.3cm]
        
+      
+        Le but de cette explication est de montrer la différence considérable
+        avec d'autres langages de programmation. Un lecteur intéressé pourra
+        apprendre le langage pour plus d'informations.
 
         {Avantages}
             \begin{itemize}
