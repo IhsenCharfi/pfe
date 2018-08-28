@@ -1,5 +1,4 @@
 \section{itération 1 : nouveau BS au standard MQTT}
-    \subsection{Conception de la première itération}
         \gls{mdi}, étant une entreprise innovante en télématique, doit toujours
         suivre et avancer les nouvelles technologies. Une de ces technologies
         est le protocol de communication standard des objets connectés: le MQTT.
@@ -9,45 +8,73 @@
 
 
     \subsection{Descriptif du protocole:Le standard MQTT, l'essentiel à savoir}
-        Voir les couches de MQTT
-        Ce protocole s'intéresse à toutes les couches de communication du modèle OSI.
+    D’apres la specification officielle MQTT \cite{mqtt_site},
+    le standard MQTT est un protocole de transport de message Client/serveur sous le pattern de Publication/Souscription 
+    “ Publish/ Subscribe”. 
+    C'est un protocole léger , ouvert, simple et désigné d’être facile à implémenter. \\
+    Ces caractéristiques le rend idéal à être utilisé dans plusieurs situations, surtout pour la communication Machine 
+    to MAchine M2M et pour l’internet des objets IoT. Des contextes où la faible empreinte du code est requise ainsi 
+    qu’une bonne bande passante.     \\
+    
        
-        \subsubsection{La couche physique}
-           v2x définit un protocole dérivé du wifi: le 802.11p, nommé 
-            Ce protocole plus lent, mais plus adapté sert aux communications entre
-            véhicules à haute vitesse, et entre ces véhicules et des stations intelligentes.
-            Les connexions 3G et 4G ont l'inconvenient d'une grande latence, et sont donc
-            éliminées comme vecteurs pour le protocole. En effet, a besoin
-            d'établir des connexions directes entre véhicules, pour assurer une latence
-            petite, et bornée.
-            Une communication par 5G, la C-V2X (Cellular V2X), est envisagée vers
-            2025: les specs du 5G répondent aux demandes de latence pour 
-            pour cette couche.
+    \textbf{Qu’offre MQTT ? }\\
 
-
-        \subsubsection{La couche transport}
-             utilise les protocols TCP et UDP sur IPv6. Il utilise en plus
-            le protocol  Dans un premier temps, \gls{mdi}
-            s'intéresse à un modèle sansActuellement, la couche transport
-            est implémentée par la stack Marben.
+    \begin{itemize}
+        \renewcommand{\labelitemi}{$\bullet$}
+        \item L’utilisation du pattern de message “ Publication/Souscription” qui offre 
+        des distributions un-à-plusieurs ( one-to-many) et le découplage de ces deux parties.    
+        \item 3 Qualités de service QoS pour la distribution des messages . 
+        \item Un échange de protocol minimisé pour réduire le trafic  du réseau      
+        \item Un mécanisme pour notifier les parties intéressées lors d'une déconnexion anormal    
+    \end{itemize}   
+    \bigskip 
+    En cas de besoin de plus de détails sur le standard, consultez la partie Annexes. Elle comporte des eclaicissements 
+    sur le standard MQTT.
 
        
 
-    \subsection{Specifications techniques}
-        La spécification téchnique peut être divisée en deux parties:
+    \subsection{Specifications techniques \& Implémentation}
+       
+        Le Point d’entrée du cloud ou BS se charge de deux principales fonctionnalités. 
         \begin{itemize}
             \renewcommand{\labelitemi}{$\bullet$}
-            \item La spec technique du protocole
-            \item La spec ajoutée par \gls{mdi} pour adapter
+            \item  \textbf{Transfert de données :} où ils gèrent les connexions avec les boîtiers.
+            \item  \textbf{Traitement de données :} encodage/décodage des données de messages selon le format de données du cloud.
         \end{itemize}
-        \bigskip
-       
 
-    \subsection{Implémentation}
-    Imlémenter c est faciiile !! 
+        Puisque le standard repose sur le découplage entre le publisher et subscriber, la conception doit prendre 
+        en compte  un broker MQTT pour assurer cette notion. 
+        La conception est présenté par la figure suivante .. 
+
+ ********* Insertion d une figure de la conception ************** \\
+        Le BS aura deux parties importantes qui sont le transfert des données et l'encodage pour le broker.
+
         \subsubsection{Recherche \& état de l'art}
             
+        \textbf{A la recherche d'un broker MQTT! }
 
+        Il existe quelque large implémentation de MQTT comme Facebook Messenger par example, mais aussi de nombreux 
+        outils monétisés et d'autres open source.
+        Il y a aussi un projet Eclipse active, "Paho", qui offre une implémentation scalable , open source pour 
+        différents langage de programmation comme Java , 
+        C, C++ , Python , JavaScript , C\# et Go lang. \\
+        Il existe plusieurs implémentations qui sont réunis dans cette référence et qui les comparent selon plusieurs critères. 
+        Pour effectuer un bon choix satisfaisant de toute ces propositions, il faut bien demander les critères de l'entreprise en premier lieu 
+        sur lesquels on se base. \\ \break 
+        Comme la stratégie de l entreprise est de réduire les coûts, nous éliminons les choix d'outils payants. 
+        Un autre critère est la charge des connexions du broker. L'un des objectifs de \gls{md30} est d'augmenter le support 
+        en charge du nouveau BS ce qui revient dans ce cas à étudier la charge du broker MQTT en question. 
+        Ceci peut être effectué de deux manières : 
+        \begin{itemize}
+            \item Augmenter le support en charge du Broker par rapport au \gls{BS} de \gls{mdi21}, sachant que
+            le support du BS actuel est de ... 
+            \item Assurer la scalabilité du broker ce qui revient à choisir dés le début un broker scalable.
+        \end{itemize}
+        
+        
+        
+
+         
            
         \pagebreak
 
