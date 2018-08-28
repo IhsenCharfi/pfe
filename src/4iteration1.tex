@@ -113,8 +113,21 @@
 
 
         \subsubsection{Développement effectué}
-            il faut tester les différents particularités du standard MQTT. 
-            \begin{itemize}
+
+        L'intégration du broker dans la chiane de push qui est composé par:\\
+         . Traitement de données:
+            le(s) subscriber(s) qui lie le Track et lance les processus d’encodage. \\
+            le(s) publishers qui envoie le Message et publie au broker \\
+        Dans cette partie , il faut mentionner le dilemme des topics et leurs créations 
+        pour savoir le nombre des sub / pub .. et le problème de clustering qu l engendre . 
+        => le couplage lâche n’est pas toujours la bonne solution surtout dans notre cas: les instances doivent être dépendantes . \\
+
+        . L’échange avec Kafka : 
+            Les clients kafka : = un producteur kafka  et consommateur
+
+
+        il faut tester les différents particularités du standard MQTT. 
+        \begin{itemize}
                 \item le wildcard : 
                 \item le support de lastwill : 
                 \item le support de QoS 1 
@@ -159,6 +172,7 @@
         \includegraphics[scale=0.6]{\images/dockervsvirt.png}
         \caption{L'optimisation de docker par rapport à la machine }
     \end{figure}
+    \break
 
     \subsubsection{Evaluation}
 
