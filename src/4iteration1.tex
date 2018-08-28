@@ -29,9 +29,31 @@
     \end{itemize}   
     \bigskip 
     En cas de besoin de plus de détails sur le standard, consultez la partie Annexes. Elle comporte des eclaicissements 
-    sur le standard MQTT.
+    sur le standard MQTT.\\
 
+    \textbf{En quoi MQTT sera meilleur ?  } \\
+    Pour répondre à une telle question il faut comparer entre MQTT et le protocole de \gls{mdi21} comme le montre le tableau \ref{table:mqttvsmd21}
+    de la page \pageref{table:mqttvsmd21}.
+    \begin{table}[h!]
+        \centering
+        \begin{tabular}{|p{5cm}|p{5cm}|p{5cm}|}
+            \hline
+            \centering
+
+               & MQTT & \gls{mdi21} \\
+            \hline
+            Logique & standardisée & fait maison  \\
+            \hline
+           Protocole basé sur & TCP/IP & TCP - UDP\\
+            \hline 
+            Couplage entre BS et consommateurs & Broker découplé des consommateurs & couplage fort \\
+            \hline
+        \end{tabular}   
+        \caption{Tableau de comparaison : MQTT vs MD21}
+        \label{table:mqttvsmd21}
+    \end{table} \\
        
+    \break
 
     \subsection{Specifications techniques \& Implémentation}
        
@@ -49,19 +71,24 @@
  ********* Insertion d une figure de la conception ************** \\
         Le BS aura deux parties importantes qui sont le transfert des données et l'encodage pour le broker.
 
-        \subsubsection{Recherche \& état de l'art}
+    \subsubsection{Recherche \& état de l'art}
             
-        \textbf{A la recherche d'un broker MQTT! }
 
         Il existe quelque large implémentation de MQTT comme Facebook Messenger par example, mais aussi de nombreux 
         outils monétisés et d'autres open source.
         Il y a aussi un projet Eclipse active, "Paho", qui offre une implémentation scalable , open source pour 
         différents langage de programmation comme Java , 
         C, C++ , Python , JavaScript , C\# et Go lang. \\
-        Il existe plusieurs implémentations qui sont réunis dans cette référence et qui les comparent selon plusieurs critères. 
-        Pour effectuer un bon choix satisfaisant de toute ces propositions, il faut bien demander les critères de l'entreprise en premier lieu 
-        sur lesquels on se base. \\ \break 
-        Comme la stratégie de l entreprise est de réduire les coûts, nous éliminons les choix d'outils payants. 
+        Il existe plusieurs implémentations qui sont réunis dans cette référance \cite{mqtt_choix} publié par un des membbre de la communauté de MQTT et qui les comparent selon plusieurs critères. 
+        Pour effectuer un bon choix satisfaisant de toute ce    s propositions, il faut bien demander les critères de l'entreprise en premier lieu 
+        sur lesquels on se base. \\
+        
+        {\centering
+        \textbf{A la recherche d'un broker MQTT! } \\}
+        \vspace{0.2cm}
+        Comme la stratégie de l entreprise est de réduire les coûts, nous éliminons les choix d'outils payants. \\
+        D'autre part, le support de QoS 2 n'est pas exigé vue que l'échange de message en QoS 2 est trés couteux. 
+        Tandis que le QoS 1 est indispensable pour profiter du système des ack.\\
         Un autre critère est la charge des connexions du broker. L'un des objectifs de \gls{md30} est d'augmenter le support 
         en charge du nouveau BS ce qui revient dans ce cas à étudier la charge du broker MQTT en question. 
         Ceci peut être effectué de deux manières : 
@@ -69,30 +96,72 @@
             \item Augmenter le support en charge du Broker par rapport au \gls{BS} de \gls{mdi21}, sachant que
             le support du BS actuel est de ... 
             \item Assurer la scalabilité du broker ce qui revient à choisir dés le début un broker scalable.
-        \end{itemize}
+        \end{itemize} 
+        \vspace{0.3cm}
+        En se basant sur ces critères, nous éliminons déjà beaucoup de choix pour rester avec les implémentations des projets 
+        open source qui ont implémenté la QoS 1 ainsi qu'une solution pour la sclalabilité du broker. En plus il faut que le projet soit mis 
+        à jour avec une communauté qui le supporte.  
+        Nous nous retrouvons alors avec 2 choix qui répondent à nos critères : 
+        \begin{itemize}
+            \item HmQ : Broker MQTT open source développé en Go lang. 
+            \item Mosca : Broker MQTT open source déeloppé en Node.JS. 
+        \end{itemize} 
         
-        
-        
+        Afin de déterminer lequel de ces brokers sera choisi il faut bien vérifier qu il répondent aux attentes en effectuons quelques tests. 
+        Pour ce faire nous avons intégrés les brokers dans la chaine de transfert des données jusqu' à lentrée dans le cloud - 
+        c'est à dire le push dans kafka.
 
-         
-           
-        \pagebreak
 
         \subsubsection{Développement effectué}
-            Le développement de ce projet est divisé 
+            il faut tester les différents particularités du standard MQTT. 
+            \begin{itemize}
+                \item le wildcard : 
+                \item le support de lastwill : 
+                \item le support de QoS 1 
+                \item le support 
+            \end{itemize} 
+           
+            Tous ceci ont été vérifié en résumant dans le tableau suivant : 
 
     \subsection{Tests \& Performance}
-       
+    Après avoir fini le développement et les tests de la première itération. 
+    On évalue le système par rapport à nos exigences globaux du système. 
+    Néanmoins lors de cette évaluation on est face à plusieurs problématiques qu il faut pas négliger. 
+
+    \begin{itemize}
+        \renewcommand{\labelitemi}{$\bullet$}
+        \item Le coût de communication sera élevé, car ça sera des paquets tcp dans des paquets MQTT 
+        \item L'ajout du maintien d’un nouveau broker avec sa BD: ceci ajoute de la complexité à gérer.
+        \item La manière de consommer depuis le broker: 
+    \end{itemize}
+
+    Différentes manières pour effectuer la consommation : 
+
+    Pour chaque manière on étudie les avantages et les inconvénients ... 
 
 
-    Paragraphe sur le language Go : 
-    Go est un jeune language de programmation système
-    fascinant. Ce language compilé hérite des idées des paradigmes de
-    programmation impérative et fonctionnelle. Il définit des concepts et
-    des règles qui assurent à l'utilisateur des binaires .\\[0.3cm]
-   
+
+    \textbf{Evaluation :}
+    Cette première itération nous a prouvé la limite de MQTT pour le projet MD30. Elle sert comme une étude 
+    sur la faisabilité d'intégration du standard dans le projet.
+    La question qui se pose est , quelles sont les fonctionnalités MQTT que MD30 exige par rapport aux 
+    diverses fonctionnalités offertes par MQTT ? = > ils sont peu : 
+    Ce que MD30 exige de tout cela n’est que le mécanisme des acks qui sont traités par les headers des messages MQTT. 
+    Donc ajouter des bytes de plus comme étant un header dans le nouveau format de message du boîtier permet ce mécanisme. 
+    => une implémentation fait-maison de ça fera l'affaire. \\
+
+
+
+
+    \textbf{Conclusion} \break
+            Après avoir fait une évaluation de la première itération et faire l étude de coût et performances de MQTT, 
+        nous nous rendons compte que ce dernier est tellement riche en exigences divergente des exigences de MD30 et 
+        donc l'adopter tel qu il comme le protocole de communication de MDI n’était pas la bonne solution. 
+
+
+    
+
+
+
   
-    Le but de cette explication est de montrer la différence considérable
-    avec d'autres langages de programmation. Un lecteur intéressé pourra
-    apprendre le langage pour plus d'informations.
 
