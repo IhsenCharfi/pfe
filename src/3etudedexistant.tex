@@ -110,19 +110,24 @@
                 \item \textbf{Pod :} Les pods de Kubernetes\\
                 \item \textbf{Butler :} \\
                 \item \textbf{Agent :} Un service Cloud \\
+                \item docker custom registery
             \end{itemize} 
 
             Pour faciliter la communication entr les agents, \gls{CC} migre vers un format de message de MsgPack  vers ProtoBuffer 
 
             \vspace{0.2cm}
 
-***********Expliquer différence entre MsgPack et ProtoBuffer *******
+            ***********Expliquer différence entre MsgPack et ProtoBuffer *******
 
     \subsection{le BS \gls{mdi21} de plus pres}
 
-        \subsubsection{technologies}
         Redis , Indigen ..., fonctionnalités \\
-        Cet agent est codé en Erlang, c’est un problème pour la garantie de la maintenance future.
+       
+
+        le \gls{BS} est le service de communication. Il présente le point d'entrée des boitiers au CloudConnect. 
+            Multiple instances sont lancés sur des serveurs host différents pour assurer la balance de la charge 
+            et éviter les \textit{Single Point Of Failure}. \\
+        Cet agent est codé en Erlang, c’est un problème pour la garantie de la maintenance future du composant.
         Erlang perds de son intérêt pour 2 raisons:
             L'élasticité de la VM n’est plus utile avec Docker et Kubernetes
             Le chargement à chaud des nouvelles versions et la coexistence avec les anciennes version est aussi 
@@ -146,7 +151,7 @@
         \end{itemize}
 
         \subsubsection{Transmission boitier-serveur }
-        La transmission se fait en utilisant le protocole MD21. MD21 est une logique in-house de séquence 
+        La transmission se fait en utilisant le protocole \gls{mdi21}. \gls{mdi21} est une logique in-house de séquence 
         ainsi qu’un encodage décrit en \gls{asn1}\\
         Ce protocole fonctionne en TCP et en UDP. L’UDP n’est que rarement utilisé étant 
         donné que les opérateurs téléphonique ne le favorise pas, voire rendent son utilisation impossible correctement.
@@ -156,12 +161,3 @@
         Une limitation actuelle, c’est que les transaction ne sont pas identifiées et que le serveur ne peut donc pas indiquer 
         au boîtier un index unique du dernier track traite. De ce fait, le boitier re-envoi tous les track qui n’ont pas été 
         acknowledged et on a des rejeu de données.
-
-
-
-
-
-       
-
-
-       
