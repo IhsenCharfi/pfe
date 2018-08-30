@@ -15,14 +15,14 @@
                 \multicolumn{4}{|c|}{Les changements des exigences } \\
                 \hline   & Itération1 & Itération2 & Avantage de cette évolution\\
                 \hline
-                Protocol de communication & MQTT & TCP {\footnotesize avec le support de MQTT} &
+                Protocole de communication & MQTT & TCP {\footnotesize avec le support de MQTT} &
                 Moins coûteux par rapport aux paquets échangés, tout en gardant 
                 la possibilité de connecter le boîtier à un serveur MQTT \\
                 \hline
                 Architecture du BS  &  Un cluster de brokers MQTT avec des 
                 subscribers des tracks et publishers d’events.  & Un cluster de 
                 TCP serveur qui gèrent les connexions, traitent les message échangés 
-                et envoient/re\c coivent les msg à/de kafka. & Moins coûteux par 
+                et envoient/re\c oivent les msg à/de kafka. & Moins coûteux par 
                 rapport aux instances à gérer. 
                 Plus facile à gérer un seul composant au BS. 
                 Pas de complexité à dispatcher les subscribers quand on monte de charge.\\
@@ -31,7 +31,7 @@
             \caption{Tableau de comparaison des exigences du projet}
             \label{table:3}
         \end{table} \\
-        La spécification téchnique peut être divisée en deux parties:
+        La spécification technique peut être divisée en deux parties:
         \begin{itemize}
             \renewcommand{\labelitemi}{$\bullet$}
             \item La spec technique du protocole
@@ -56,9 +56,9 @@
         
        
             Le BS  repose sur 3 grands composants: 
-            En premier temps, le TCP serveur qui gère la connexion avec le boitier. 
+            En premier temps, le TCP serveur qui gère la connexion avec le boîtier. 
             En deuxième temps,le traitement des données doit être gérer en parallèle. 
-            Ce traitement assure l’encodage du protobuf boitier au protobuf cloud et 
+            Ce traitement assure l’encodage du protobuf boîtier au protobuf cloud et 
             vis-versa. 
             D’autre part, deux clients kafka, un producteur qui va publier les messages 
             encodés et un autre consommateur qui va recevoir les messages d event. 
@@ -86,7 +86,7 @@
                 La première connexion se fait avec le TCP Listener. 
                 Comme son nom l’indique, ce composant écoute, vérifie et  maintient la 
                 connexion avec les boîtiers. Il est considéré comme le Générateur. 
-                Après avoir vérifier la connexion avec un boitier donné, il envoie le 
+                Après avoir vérifier la connexion avec un boîtier donné, il envoie le 
                 message reçu au processus de traitement dans un channel. \\
                 Ce dernier décode le format du message et l’encode en format des données du 
                 cloud. Ensuite il le met dans un buffer des messages prêts à la publication 
@@ -98,8 +98,8 @@
                 Le service qui a déclenché l’event va publier dans le broker des messages le 
                 message dans un topic spécifique. Le client consommateur est toujours en écoute sur ce topic, 
                 il reçoit le message et l'envoie directement au traitement. Le message s’encode avec le format 
-                protobuf du boitier est maintenant prêt à être envoyer au boîtier. Le TCP listener s’occupe alors 
-                de son envoi à son boitier. \\
+                protobuf du boîtier est maintenant prêt à être envoyer au boîtier. Le TCP listener s’occupe alors 
+                de son envoi à son boîtier. \\
                 Il est à noter que l'implémentation de cet envoi par rapport à plusieurs 
                 instances sera plus complexe. 
             \end{itemize}
@@ -120,12 +120,12 @@
         \begin{itemize}
             \item les Goroutines: Une fonction indépendante en cours d'exécution qui est lancé par une instruction go. 
             Cette goroutine possède sa propre call stack, qui se développe et se réduit comme requiers.
-            Une goroutine est faible en cout. donc le fait de lancer des centaines voire des milliers n'est pas couteux.
-            Une goroutine nest pas un thread ... Dans un programme go on peu trouver un seul thread avec plusieurs goroutines.\\
+            Une goroutine est faible en coût. donc le fait de lancer des centaines voire des milliers n'est pas couteux.
+            Une goroutine n'est pas un thread ... Dans un programme go on peu trouver un seul thread avec plusieurs goroutines.\\
 
-            \item la gestion Data race : \\
+            \item la gestion Data race : ****** développer un peu sur ça ***** \\
 
-            \item Go conccurency pattern: Pipeline : Les primitives de concurrence de Go facilite la construction 
+            \item Go pattern de concurrence: Pipeline : Les primitives de concurrence de Go facilite la construction 
             des data streaming qui prouve l’efficacité d utilisation des I/O avec multiple CPUs. 
             Il n existe pas une définition formelle de pipeline. c’est une parmi plusieurs type de programme concurrentiel. D'une façon générale , une pipeline est une série d’étapes connectés par une “channel”, chaque étape est un groupe de goroutines qui exécute la même fonction. 
             Chaque étape les goroutines:

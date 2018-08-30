@@ -13,7 +13,7 @@
     “ Publish/ Subscribe”. 
     C'est un protocole léger , ouvert, simple et désigné d’être facile à implémenter. \\
     Ces caractéristiques le rend idéal à être utilisé dans plusieurs situations, surtout pour la communication Machine 
-    to MAchine M2M et pour l’internet des objets IoT. Des contextes où la faible empreinte du code est requise ainsi 
+    to MMachine M2M et pour l’internet des objets IoT. Des contextes où la faible empreinte du code est requise ainsi 
     qu’une bonne bande passante.     \\
     
     {
@@ -195,11 +195,11 @@
 
     Le but de ces tests et de tester la performance du cluster et son support de charge.
 
-    \textbf{1er deploiement de test : le clustering avec HAProxy } :\\
+    \textbf{1er déploiement de test : le clustering avec HAProxy } :\\
     Communication entre les conteneurs en local avec minikube. 
     HAproxy est un load balancer pour les conteneurs docker
     Monitoring avec haproxy : outil intégré de visualiser le nbr de cnx , les instances ups
-    \textbf{2eme deploiement de test : le clustering avec \gls{k8s} }\\
+    \textbf{2eme déploiement de test : le clustering avec \gls{k8s} }\\
     Toutes les services et composants de CLoudNExt sont orchestrés par k8s.
     \gls{k8s} un  orchestrateur de conteneurs qui ... 
     un cluster de dev sur des machines réels hébergés à OVH. 
@@ -228,19 +228,19 @@
         \item L'ajout du maintien d’un nouveau broker avec sa BD: ceci ajoute de la complexité à gérer.
         \item La manière de consommer depuis le broker: 
         \begin{itemize}
-            \item \textbf{un seul consomateur gloabl :} \\
-            \textbf{Avantages :} Lire tout du broker, Ecrire tous au clients sans avoir besoin de partager la consommation 
+            \item \textbf{un seul consommateur global :} \\
+            \textbf{Avantages :} Lire tout du broker, Écrire tous au clients sans avoir besoin de partager la consommation 
             sur plusieurs consommateurs. D'un autre coté, avec une telle manière de consommation on assure que tous les messages 
             sont toujours dans le broker jusqu'à leurs consommation lorsque la persistance est assuré par le broker MQTT\\
             \textbf{Inconvénients :} Problème de \textit{Single Point Of Failure} car si le consommateur tombe il y aura un blocage sur toute 
-            la chaîne. Cette résilience peut être traité par \gls{k8s}, mais elle entraine une latence considérable si elle est réccurente. 
+            la chaîne. Cette résilience peut être traité par \gls{k8s}, mais elle entraîne une latence considérable si elle est récurrente. 
             \item \textbf{plusieurs consomatteurs connectés selon une hiérarchie de topics :} \\
             \textbf{Avantages :} Théoriquement c'est la solution standard du protocole MQTT d'avoir plusieurs consommateurs 
-                    par brokeret donc la plus adéquate à utiliser. \\
+                    par broker et donc la plus adéquate à utiliser. \\
             \textbf{Inconvénients :} Pour les clients il y a pas d'hiérarchie clair pour les clients. 
                     D'autre part, il y a une différence importante de nombre d asset par client chez \gls{mdi21} 
-                    la diversité des clients de \gls{mdi} fait que il y a des individus qui ne possèdent que qlq boitiers 
-                    en revanche d'autres clients comme constructeurs d automobile possèdents des milliers. De point de vue 
+                    la diversité des clients de \gls{mdi} fait que il y a des individus qui ne possèdent que qlq boîtiers 
+                    en revanche d'autres clients comme constructeurs d automobile possèdent des milliers. De point de vue 
                     scalabilité cela fera un problème vue que le nombre de consommateurs augmentera selon les clients.
                     Ou bien au contraire qu'un seul client augmente sa commande que finalement un seul thread consommateur 
                     n'accepte plus de connexions.
