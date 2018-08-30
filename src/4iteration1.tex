@@ -151,8 +151,8 @@
             Tous ceci ont été vérifié en résumant dans le tableau suivant : 
 
     \subsection{Tests \& Performance}
-    \subsubsection{Virtualisation avec Docker}
-    À l’aide de conteneurs, tout ce qui est nécessaire pour faire exécuter un logiciel est emballé
+    \textbf{Virtualisation avec Docker}\\
+    À l’aide de conteneurs, on trouve tout ce qui est nécessaire pour faire exécuter un logiciel est emballé
     dans des conteneurs isolés. Contrairement aux machines virtuelles, les conteneurs ne regroupent
     pas un système d’exploitation complet : seules les bibliothèques et les paramètres requis pour
     que le logiciel fonctionne sont nécessaires.\\
@@ -178,28 +178,78 @@
         noms de réseau, avec une interface virtuelle et une adresse IP propre.
     \end{itemize}
 
-    la figure .. montre l’optimisation en ressources qu’offre la virtualisation avec la technologie
+    la figure \ref{fig:docker} montre l’optimisation en ressources qu’offre la virtualisation avec la technologie
     des conteneurs par rapport à la technologie de machine virtuelle et hyperviseur.
 
     \begin{figure}[ht]
         \centering
         \includegraphics[scale=0.6]{\images/dockervsvirt.png}
         \caption{L'optimisation de docker par rapport à la machine }
+        \label{fig:docker}
     \end{figure}
     \break
 
+    \subsubsection{Tests}
+    L'infrastructure est de devops .. plusieurs clusters 
+    local / DEV / inté / prod , pour nous on s intéresse aux deux premières étapes. 
+
+    Le but de ces tests et de tester la performance du cluster et son support de charge.
+
+    \textbf{1er deploiement de test : le clustering avec HAProxy } :\\
+    Communication entre les conteneurs en local avec minikube. 
+    HAproxy est un load balancer pour les conteneurs docker
+    Monitoring avec haproxy : outil intégré de visualiser le nbr de cnx , les instances ups
+    \textbf{2eme deploiement de test : le clustering avec \gls{k8s} }\\
+    Toutes les services et composants de CLoudNExt sont orchestrés par k8s.
+    \gls{k8s} un  orchestrateur de conteneurs qui ... 
+    un cluster de dev sur des machines réels hébergés à OVH. 
+    l infrastructure est développé et maintenu par l'équipe serveur. 
+    On trouve les composants de base toujours déployé et pour les nouveaux agents on les intégre en passant par helm.  
+
+    Le but de ces tests et de tester la performance du cluster et son support de charge.
+    **************************** les graphes de cnx *************************** \\
+
+    Nombre de cnx par broker , par \\
+
+    ************************ les graphes de percentile ***************************\\
+    K8s traite la résilience \\
+
+    Le monitoring se fait par InfluxDB/Grafana. Les composants remontent des métriques influxdb qui sont visibles par Grafana. 
+        
     \subsubsection{Evaluation}
 
     Après avoir fini le développement et les tests de la première itération. 
     On évalue le système par rapport à nos exigences globaux du système. 
-    Néanmoins lors de cette évaluation on est face à plusieurs problématiques qu il faut pas négliger. 
+    Néanmoins lors de cette évaluation on est face à plusieurs problématiques qu il faut prendre en considération. 
 
     \begin{itemize}
         \renewcommand{\labelitemi}{$\bullet$}
         \item Le coût de communication sera élevé, car ça sera des paquets tcp dans des paquets MQTT 
         \item L'ajout du maintien d’un nouveau broker avec sa BD: ceci ajoute de la complexité à gérer.
         \item La manière de consommer depuis le broker: 
+        \begin{itemize}
+            \item \textbf{un seul consomateur gloabl :} \\
+            \textbf{Avantages :} Lire tout du broker, Ecrire tous au clients sans avoir besoin de partager la consommation 
+            sur plusieurs consommateurs. D'un autre coté, avec une telle manière de consommation on assure que tous les messages 
+            sont toujours dans le broker jusqu'à leurs consommation lorsque la persistance est assuré par le broker MQTT\\
+            \textbf{Inconvénients :} Problème de \textit{Single Point Of Failure} car si le consommateur tombe il y aura un blocage sur toute 
+            la chaîne. Cette résilience peut être traité par \gls{k8s}, mais elle entraine une latence considérable si elle est réccurente. 
+            \item \textbf{plusieurs consomatteurs connectés selon une hiérarchie de topics :} \\
+            \textbf{Avantages :} Théoriquement c'est la solution standard du protocole MQTT d'avoir plusieurs consommateurs 
+                    par brokeret donc la plus adéquate à utiliser. \\
+            \textbf{Inconvénients :} Pour les clients il y a pas d'hiérarchie clair pour les clients. 
+                    D'autre part, il y a une différence importante de nombre d asset par client chez \gls{mdi21} 
+                    la diversité des clients de \gls{mdi} fait que il y a des individus qui ne possèdent que qlq boitiers 
+                    en revanche d'autres clients comme constructeurs d automobile possèdents des milliers. De point de vue 
+                    scalabilité cela fera un problème vue que le nombre de consommateurs augmentera selon les clients.
+                    Ou bien au contraire qu'un seul client augmente sa commande que finalement un seul thread consommateur 
+                    n'accepte plus de connexions.
+            \item \textbf{plusieurs consomatteurs connectés aux instances, un consommateur par instance de broker}: \\
+            \textbf{Avantages :} un des avantages \\
+            \textbf{Inconvénients :} C'est le couplage fort entre le broker et son consommateurs et donc c 'est contre.\\
+        \end{itemize}
     \end{itemize}
+
 
     Différentes manières pour effectuer la consommation : 
 
