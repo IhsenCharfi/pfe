@@ -1,14 +1,14 @@
 \section{itération 1 : nouveau BS au standard MQTT}
         \gls{mdi}, étant une entreprise innovante en télématique, doit toujours
         suivre et avancer les nouvelles technologies. Une de ces technologies
-        est le protocol de communication standard des objets connectés: le MQTT.
+        est le protocole de communication standard des objets connectés: le MQTT.
 
         ...
         
 
 
     \subsection{Descriptif du protocole:Le standard MQTT, l'essentiel à savoir}
-    D’apres la specification officielle MQTT \cite{mqtt_site},
+    D’après la spécification officielle MQTT \cite{mqtt_site},
     le standard MQTT est un protocole de transport de message Client/serveur sous le pattern de Publication/Souscription 
     “ Publish/ Subscribe”. 
     C'est un protocole léger , ouvert, simple et désigné d’être facile à implémenter. \\
@@ -28,11 +28,11 @@
         \item L’utilisation du pattern de message “ Publication/Souscription” qui offre 
         des distributions un-à-plusieurs ( one-to-many) et le découplage de ces deux parties.    
         \item 3 Qualités de service QoS pour la distribution des messages . 
-        \item Un échange de protocol minimisé pour réduire le trafic  du réseau      
+        \item Un échange de protocole minimisé pour réduire le trafic  du réseau      
         \item Un mécanisme pour notifier les parties intéressées lors d'une déconnexion anormal    
     \end{itemize}   
     \bigskip 
-    En cas de besoin de plus de détails sur le standard, consultez la partie Annexes. Elle comporte des eclaicissements 
+    En cas de besoin de plus de détails sur le standard, consultez la partie Annexes. Elle comporte des éclaircissements 
     sur le standard MQTT.\\
 
     {
@@ -65,10 +65,10 @@
 
         Cette compariaosn montre les différences entre les deux protocoles en mettant en valeur les points considérés forts de MQTT par rapport
         à \gls{mdi21}. 
-        Ces points sont autour la logique du protocole adapté, leurs protcoles de base et le degrée de couplage avec les consomatteurs 
+        Ces points sont autour la logique du protocole adapté, leurs protocoles de base et le dégrée de couplage avec les consommateurs 
         ou la partie traitement dans notre cas. \\
         
-    \subsection{Specifications techniques \& Implémentation}
+    \subsection{Spécifications techniques \& Implémentation}
        
         Le Point d’entrée du cloud ou BS se charge de deux principales fonctionnalités. 
         \begin{itemize}
@@ -92,7 +92,7 @@
         Il y a aussi un projet Eclipse active, "Paho", qui offre une implémentation scalable , open source pour 
         différents langage de programmation comme Java , 
         C, C++ , Python , JavaScript , C\# et Go lang. \\
-        Il existe plusieurs implémentations qui sont réunis dans cette référance \cite{mqtt_choix} publié par un des membbre de la communauté de MQTT et qui les comparent selon plusieurs critères. 
+        Il existe plusieurs implémentations qui sont réunis dans cette référence \cite{mqtt_choix} publié par un des membbre de la communauté de MQTT et qui les comparent selon plusieurs critères. 
         Pour effectuer un bon choix satisfaisant de toute ce    s propositions, il faut bien demander les critères de l'entreprise en premier lieu 
         sur lesquels on se base. \\
         

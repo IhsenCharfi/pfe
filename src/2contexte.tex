@@ -7,13 +7,13 @@
             15 ans, conçu et développé des boîtiers connectés aux véhicules par port OBD (On
             Board Diagnostics).\\
             Actuellement, \gls{mdi} comprend une cinquantaine d’employés répartis dans plusieurs
-            pays dont la France, les États-Unis et l’Afrique du sud. Avec un chiffre d’affaire de
+            pays dont la France, les États-Unis  Irlande. Avec un chiffre d’affaire de
             plusieurs dizaines de millions d’euros et plus d’un million de boîtiers déployés dans le
             monde.\\
 
 
             ((((((((((((((((((((((((((((((figure : carte du monde montrant les pays où se trouvent MdI ( fr , USA , AS ) et les 
-            pays ou les OBD sont déployés ( les clients:  (Autriche, Belgique, Bulgarie, Croatie, Chypres, République Tchèque, Danemark, Estonie, ETats unies, Finlande, France, Allemagne, Grèce, Hongrie, Ireland, Italie, Lettonie, Lituanie, Luxembourg, Malte, Pays bas, Pologne, Portugal, Romanie, Slovaquie, Slovénie, Espagne, Suède, Suisse, Grande Bretagne))))))))))))))))))))))))))))))))
+            pays ou les OBD sont déployés ( les clients:  ( l’Afrique du sud,Autriche, Belgique, Bulgarie, Croatie, Chyprés, République Tchèque, Danemark, Estonie, ETats unies, Finlande, France, Allemagne, Grèce, Hongrie, Ireland, Italie, Lettonie, Lituanie, Luxembourg, Malte, Pays bas, Pologne, Portugal, Romanie, Slovaquie, Slovénie, Espagne, Suède, Suisse, Grande Bretagne))))))))))))))))))))))))))))))))
             \begin{figure}[ht]
                 \centering
                 \includegraphics[scale=1]{\images/cartemonde1.jpg}
@@ -22,7 +22,7 @@
 
 
             
-            Les clients de Mobile Devices Ingénierie sont ainsi réparties partout dans l'Europe et les Etats Unies. 
+            Les clients de Mobile Devices Ingénierie sont ainsi réparties partout dans l'Europe et les États Unies. 
             En effet, ils occupent différents secteurs d’activités tels que :\\
             \begin{itemize}
                 \renewcommand{\labelitemi}{$\bullet$}
@@ -77,7 +77,7 @@
         \subsubsection{Organisation et produits}
         L’entreprise suit un schéma d’organisation hiérarchique fonctionnelle composée d’une division classique du 
         travail par fonctions. Elle est constituée d’un dirigeant et ensuite d’une équipe de collaborateurs ayant 
-        différentes fonctions : commerciale, comptable, financière, ressource humaine, production, etc. 
+        différentes fonctions : commerciales, comptables, financières, ressources humaines, productions, etc. 
            Quant au côté technique, \gls{mdi} articule plusieurs types d'équipes: \\
             \begin{itemize}
                 \renewcommand{\labelitemi}{$\bullet$}
@@ -117,19 +117,19 @@
 
             \vspace{0.3cm}
 
-            Les produits Hardwares sont intégrés dans les véhicules et récolte des informations sur 
+            Les produits Hardwares sont intégrés dans les véhicules et récoltent des informations sur 
             la vitesse, la position, le niveau de carburant, la pression des pneus, etc..  à un instant t donnée.
             En général nous appelons ces produits hardwares “les boîtiers” qui doivent être intégrés dans 
             les véhicules et déployés  dans le système cloud. \\ [0.1cm]
-            Quant aux produits Softwares, il y a le Morpheus OS qui présente le système d'exploitations des boitiers. 
+            Quant aux produits Softwares, il y a le Morpheus OS qui présente le système d'exploitations des boîtiers. 
             D'autre part,les clouds CloudConnect et CloudNExt qui offrent un ensemble de services aux clients 
             et qui sont développés et maintenus par l'équipe Serveur. On détaillera plus sur ces deux produits dans le prochain chapitre. 
        
         \subsection{Présentation du projet}
         \subsubsection{Contexte du projet}
             Mon sujet principal de stage est la conception et développement du nouveau composant du Cloud. Ce composant représente 
-            le point d'entrée des données au cloud. Il assure la communication entre le cloud et les boitiers. 
-            Le composat actuel porte le nom de \gls{BS} - acronyme de Binary Server. Il est intégré seulement dans CloudConnect.
+            le point d'entrée des données au cloud. Il assure la communication entre le cloud et les boîtiers. 
+            Le composant actuel porte le nom de \gls{BS} - acronyme de Binary Server. Il est intégré seulement dans CloudConnect.
             \begin{figure}[ht]
                 \centering
                 \includegraphics[scale=0.3]{\images/bs.png}
@@ -137,29 +137,29 @@
             \end{figure}
            
         \subsubsection{Problématique}
-            Plusieurs facteurs  rendent le développement d'un noouevau composant cloud une necessité. 
+            Plusieurs facteurs  rendent le développement d'un noouevau composant cloud une nécessité. 
             \\Dans l’architecture actuelle, les deux cloud sont totalement indépendants mais ils reçoivent les données 
-            de la même source \gls{BS} malgrès la différence entre les deux formats de messages. \\ 
+            de la même source \gls{BS} malgré la différence entre les deux formats de messages. \\ 
 
-            D'autre part , pour une raison commercial, le nouveau protocol migre d'un protocol fait maison vers un protocol standardisé. \\
+            D'autre part , pour une raison commercial, le nouveau protocole migre d'un protocole fait maison vers un protocole standardisé. \\
             Un standard permet de bénéficier des librairies existantes sur le marché et donc de gagner en temps d'intégration puisque 
             il' n y aura pas le besoin de faire du développement à zéro.
             MQTT n'étant pas propriétaire, les partenaires ou clients savent également comment celui-ci est conçu. Ce qui n'est pas le cas 
             pour \gls{mdi21} \- le protocole actuel fait maison \-  donc cela permet de rassurer le client. 
-            Le "standard MQTT" permets également de laisser d'autres boitiers se connecter à notre plate-forme plus facilement 
-            plutot que d'implémenter notre protocole propriétaire dont ils n'ont meme pas les sources. \\
+            Le "standard MQTT" permets également de laisser d'autres boîtiers se connecter à notre plate-forme plus facilement 
+            plutôt que d'implémenter notre protocole propriétaire dont ils n'ont même pas les sources. \\
             Donc la possibilité de gagner la confiance de plus de clients et de s'ouvrir à des marchés potentiels.
 
 
          \subsubsection{Objectifs}
            Suite à cette problématique \gls{mdi} a mis en place le projet \gls{md30} pour mettre en place la solution.
-           MD30 sera le nouveau protocol de communication \gls{obd}-cloud qui a comme objectifs :
+           MD30 sera le nouveau protocole de communication \gls{obd}-cloud qui a comme objectifs :
             \begin{itemize}
                 \renewcommand{\labelitemi}{$\bullet$}
                 \item concevoir et réaliser un nouveau protocole de communication entre boîtier et cloud
                 \item mettre en place un nouveau composant \gls{BS}
-                \item faire une étude de faisabilité et de performance de l'utilisation du protocol MQTT 
-                comme protocol de communication.
+                \item faire une étude de faisabilité et de performance de l'utilisation du protocole MQTT 
+                comme protocole de communication.
                 \item Le support du format de données CloudNext par le nouveau BS
             \end{itemize} 
 
